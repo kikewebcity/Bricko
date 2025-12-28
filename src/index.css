@@ -1,0 +1,19 @@
+:root {
+  --primary-green: #369C38; /* Ajusta este color al de tu marca */
+  --text-dark: #1a1a1a;
+  --bg-light: #f4f4f4;
+  --font-main: "teko", sans-serif; /* Busca una fuente "Block" luego */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  /* Aquí pondremos tu imagen de textura de papel luego */
+}
