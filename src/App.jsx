@@ -1,8 +1,7 @@
 import React from 'react'
 import './App.css'
 
-// 1. IMPORTA TUS IMÁGENES AQUÍ
-// Cambia los nombres de archivo por los que subiste
+// --- IMPORTACIÓN DE IMÁGENES ---
 import foto1 from './assets/banner.avif' 
 import foto2 from './assets/iconoreciclaje.png'
 import foto3 from './assets/iconotiempo.png'
@@ -10,9 +9,12 @@ import foto4 from './assets/iconointerior.png'
 import foto5 from './assets/oficinap.jpg'
 import foto6 from './assets/tcalculadora.png'
 import foto7 from './assets/banop.jpg'
-// Si tienes más, sigue importando: import foto3 from ...
 
 function App() {
+  
+  // Estilo especial para que los iconos no se recorten
+  const iconStyle = { objectFit: "contain", padding: "25px" };
+
   return (
     <div className="portfolio-container">
       
@@ -23,67 +25,68 @@ function App() {
 
       <div className="gallery-grid">
         
-        {/* TARJETA 1 */}
+        {/* TARJETA 1 - BANNER (Novela/Destacado) */}
+        {/* Al ser foto, dejamos que llene todo el cuadro */}
         <div className="card">
           <div className="image-box">
-             <img src={foto1} alt="Proyecto 1" />
+             <img src={foto1} alt="Banner Principal" />
           </div>
-          <h2>NOMBRE PROYECTO 1</h2>
-          <p>Descripción breve del proyecto (ej. Novela).</p>
+          <h2>NOVELA CIBERPUNK</h2>
+          <p>Proyecto literario y narrativa visual.</p>
         </div>
 
-        {/* TARJETA 2 */}
+        {/* TARJETA 2 - RECICLAJE (Icono) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto2} alt="Proyecto 2" />
+             <img src={foto2} alt="App Reciclaje" style={iconStyle} />
           </div>
-          <h2>NOMBRE PROYECTO 2</h2>
-          <p>Descripción breve (ej. App Bricko).</p>
+          <h2>APP RECICLAJE</h2>
+          <p>Diseño UX/UI para sostenibilidad.</p>
         </div>
 
-        {/* Puedes copiar y pegar más bloques "div className=card" aquí */}
+        {/* TARJETA 3 - TIEMPO (Icono) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto3} alt="Icono Tiempo" style={{ objectFit: "contain", padding: "20px" }} />
+             <img src={foto3} alt="Gestión de Tiempo" style={iconStyle} />
           </div>
-          <h2>TIEMPO</h2>
-          <p>Gestión eficiente (Icono).</p>
+          <h2>TIME MANAGER</h2>
+          <p>Herramienta de productividad.</p>
         </div>
 
-        {/* TARJETA 4 - Icono Interior */}
+        {/* TARJETA 4 - INTERIORISMO (Icono) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto4} alt="Icono Interior" style={{ objectFit: "contain", padding: "20px" }} />
+             <img src={foto4} alt="Interiorismo" style={iconStyle} />
           </div>
           <h2>INTERIORISMO</h2>
-          <p>Diseño de espacios.</p>
+          <p>Conceptos de espacios.</p>
         </div>
 
-        {/* TARJETA 5 - Oficina */}
+        {/* TARJETA 5 - OFICINA (Foto) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto5} alt="Oficina" />
+             <img src={foto5} alt="Diseño de Oficina" />
           </div>
           <h2>OFICINA</h2>
-          <p>Proyecto de espacio de trabajo.</p>
+          <p>Proyecto de espacio corporativo.</p>
         </div>
 
-        {/* TARJETA 6 - Calculadora */}
+        {/* TARJETA 6 - CALCULADORA (Icono/UI) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto6} alt="Calculadora" style={{ objectFit: "contain" }} />
+             <img src={foto6} alt="Calculadora App" style={iconStyle} />
           </div>
           <h2>CALCULADORA</h2>
-          <p>Herramienta o App.</p>
+          <p>Desarrollo de herramientas web.</p>
         </div>
 
-        {/* TARJETA 7 - Baño */}
+        {/* TARJETA 7 - BAÑO (Foto) */}
         <div className="card">
           <div className="image-box">
-             <img src={foto7} alt="Baño" />
+             <img src={foto7} alt="Diseño Residencial" />
           </div>
-          <h2>BAÑO</h2>
-          <p>Diseño residencial.</p>
+          <h2>RESIDENCIAL</h2>
+          <p>Diseño de baño y acabados.</p>
         </div>
 
       </div>
