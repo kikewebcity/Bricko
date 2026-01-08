@@ -100,27 +100,48 @@ h1, h2, h3, .logo, .footer-logo {
 .benefit-card p { color: #666; }
 
 /* 4. CALCULADORA */
+/* 4. CALCULADORA (Estilo Dark Card) */
 .calculator-section {
-  padding: 60px 20px;
-  background-color: var(--color-light);
-  text-align: center;
-}
-.calc-container {
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 80px 20px;
+  background-color: white; /* Fondo general blanco */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  justify-content: center;
 }
+
+.calc-container {
+  background-color: #1a1a1a; /* La tarjeta negra */
+  color: white;
+  padding: 40px;
+  border-radius: 20px; /* Bordes redondeados */
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra elegante */
+  border: 2px solid var(--color-green); /* Borde verde sutil */
+}
+
+/* Título dentro de la tarjeta negra */
+.calc-container h2 {
+  font-family: var(--font-main);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white; /* Forzamos blanco */
+}
+
 .calc-image {
   width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 350px;
+  margin-bottom: 20px;
+  filter: brightness(0.9); /* Un pelín más oscura para que se integre */
 }
-.secondary { background-color: var(--color-dark); }
 
+/* Botón de la calculadora */
+.secondary { 
+  background-color: var(--color-green);
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 100%; /* Botón ancho */
+}
 /* 5. GRID DE PROYECTOS */
 .projects-section { padding: 60px 20px; text-align: center; }
 .section-title { font-size: 3rem; margin-bottom: 40px; }
