@@ -1,22 +1,24 @@
 import React from 'react'
 import './App.css'
 
-// IMÁGENES
-import foto1 from './assets/banner.avif' 
-import foto2 from './assets/iconoreciclaje.png'
-import foto3 from './assets/iconotiempo.png'
-import foto4 from './assets/iconointerior.png'
-import foto5 from './assets/oficinap.jpg'
-import foto6 from './assets/tcalculadora.png'
-import foto7 from './assets/banop.jpg'
+// --- IMÁGENES ---
+import bannerImg from './assets/banner.avif'       // Foto 1
+import iconEco from './assets/iconoreciclaje.png'  // Foto 2
+import iconTime from './assets/iconotiempo.png'    // Foto 3
+import iconInterior from './assets/iconointerior.png' // Foto 4
+import projectOffice from './assets/oficinap.jpg'  // Foto 5
+import calcImg from './assets/tcalculadora.png'    // Foto 6
+import projectBath from './assets/banop.jpg'       // Foto 7
 
 function App() {
-  const iconStyle = { objectFit: "contain", padding: "25px" };
+  
+  // Estilo para que los iconos no se deformen
+  const iconStyle = { objectFit: "contain", padding: "10px" };
 
   return (
-    <div className="portfolio-container">
+    <div className="main-container">
       
-      {/* --- NUEVA BARRA DE NAVEGACIÓN --- */}
+      {/* 1. BARRA DE NAVEGACIÓN */}
       <nav className="navbar">
         <div className="logo">🧱 BRICKO</div>
         <ul className="nav-menu">
@@ -27,49 +29,91 @@ function App() {
           <li>Contacto</li>
         </ul>
         <div className="nav-icons">
-          <span>🔍</span> {/* Lupa */}
-          <span>🛒</span> {/* Carrito */}
+          <span>🔍</span> 
+          <span>🛒</span> 
         </div>
       </nav>
 
-      {/* --- CABECERA PRINCIPAL --- */}
-      <header>
-        <h1 className="main-title">LA REVOLUCIÓN ECOLÓGICA <br/> EN CONSTRUCCIÓN</h1>
-        <button className="cta-button">Cotiza Ahora</button>
-      </header>
-
-      {/* --- GRID DE BENEFICIOS/PROYECTOS --- */}
-      <div className="gallery-grid">
-        
-        {/* TARJETA 1 - INSTALACIÓN */}
-        <div className="card">
-          <div className="image-box">
-             {/* Usamos el icono del reloj (foto3) para simular "Instalación Rápida" */}
-             <img src={foto3} alt="Instalación Rápida" style={iconStyle} />
-          </div>
-          <h2>INSTALACIÓN RÁPIDA</h2>
-          <p>Ahorro hasta 50% de tiempo en obra.</p>
+      {/* 2. BANNER PRINCIPAL (Slider) */}
+      <section className="hero-section" style={{ backgroundImage: `url(${bannerImg})` }}>
+        <div className="hero-content">
+          <h1 className="hero-title">LA REVOLUCIÓN ECOLÓGICA <br/> EN CONSTRUCCIÓN</h1>
+          <button className="cta-button">Cotiza Ahora</button>
         </div>
+      </section>
 
-        {/* TARJETA 2 - ECOLÓGICO */}
-        <div className="card">
-          <div className="image-box">
-             <img src={foto2} alt="100% Ecológico" style={iconStyle} />
+      {/* 3. TRES TARJETAS (BENEFICIOS) */}
+      <section className="benefits-section">
+        <div className="benefits-grid">
+          {/* Tarjeta 1 */}
+          <div className="benefit-card">
+            <img src={iconTime} alt="Instalación" style={iconStyle} />
+            <h3>INSTALACIÓN RÁPIDA</h3>
+            <p>Ahorro hasta 50% de tiempo en obra.</p>
           </div>
-          <h2>100% ECOLÓGICO</h2>
-          <p>Hecho de papel reciclado comprimido.</p>
-        </div>
-
-        {/* TARJETA 3 - ESTÉTICA */}
-        <div className="card">
-          <div className="image-box">
-             <img src={foto4} alt="Estética Interior" style={iconStyle} />
+          {/* Tarjeta 2 */}
+          <div className="benefit-card">
+            <img src={iconEco} alt="Ecológico" style={iconStyle} />
+            <h3>100% ECOLÓGICO</h3>
+            <p>Hecho de papel reciclado comprimido.</p>
           </div>
-          <h2>ESTÉTICA INTERIOR</h2>
-          <p>Acabados modernos y limpios.</p>
+          {/* Tarjeta 3 */}
+          <div className="benefit-card">
+            <img src={iconInterior} alt="Estética" style={iconStyle} />
+            <h3>ESTÉTICA INTERIOR</h3>
+            <p>Acabados modernos y limpios.</p>
+          </div>
         </div>
+      </section>
 
-      </div>
+      {/* 4. CALCULADORA */}
+      <section className="calculator-section">
+        <h2 className="section-title">CALCULA TU PROYECTO</h2>
+        <div className="calc-container">
+          {/* Aquí ponemos la imagen de la calculadora que subiste */}
+          <img src={calcImg} alt="Calculadora de Materiales" className="calc-image" />
+          <button className="cta-button secondary">Empezar Cálculo</button>
+        </div>
+      </section>
+
+      {/* 5. GRID DE 3 IMÁGENES (PROYECTOS) */}
+      <section className="projects-section">
+        <h2 className="section-title">TRANSFORMA TUS ESPACIOS</h2>
+        <div className="projects-grid">
+          
+          <div className="project-card">
+            <img src={projectBath} alt="Hogar" />
+            <div className="project-label">HOGAR</div>
+          </div>
+
+          <div className="project-card">
+            <img src={projectOffice} alt="Oficina" />
+            <div className="project-label">OFICINA</div>
+          </div>
+
+          <div className="project-card">
+            {/* Reutilizo Oficina porque nos falta una foto, cámbiala cuando puedas */}
+            <img src={projectOffice} alt="Comercial" />
+            <div className="project-label">COMERCIAL</div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. FOOTER NEGRO */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-logo">🧱 BRICKO</div>
+          <p>Revolución Ecológica en Construcción.</p>
+          <div className="socials">
+            <span>Instagram</span> | <span>Facebook</span> | <span>LinkedIn</span>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2026 Bricko. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+
     </div>
   )
 }
