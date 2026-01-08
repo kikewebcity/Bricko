@@ -78,3 +78,10 @@ h1 {
   font-size: 2.5rem;
   margin-top: 15px;
 }
+/* Excepción para cuando la imagen es un icono */
+.image-box img.icono {
+  object-fit: contain; /* No recortar */
+  padding: 20px;       /* Darle aire alrededor */
+  background-color: #222; /* Opcional: un fondo un poco más claro para resaltar el icono */
+}
+
