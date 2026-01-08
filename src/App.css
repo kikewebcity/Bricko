@@ -1,87 +1,163 @@
 :root {
   --font-main: "Teko", sans-serif;
-  --bg-color: #0d0d0d; /* Negro casi puro */
-  --text-color: #e0e0e0;
-  --accent-color: #00f3ff; /* Azul ciberpunk neón */
+  --color-green: #4CAF50;
+  --color-dark: #1a1a1a;
+  --color-light: #f4f4f4;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: sans-serif; /* Fuente base para textos largos */
+  font-family: sans-serif;
+  background-color: white;
+  color: var(--color-dark);
 }
 
-/* Títulos con tu fuente TEKO */
-h1, h2, .subtitle {
+h1, h2, h3, .logo, .footer-logo {
   font-family: var(--font-main);
   text-transform: uppercase;
-  margin: 0;
 }
 
-.portfolio-container {
+/* 1. NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 2rem; font-weight: bold; }
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  /* Oculto en móvil por ahora */
+  display: none; 
+}
+@media (min-width: 768px) { .nav-menu { display: flex; } }
+
+/* 2. BANNER / HERO */
+.hero-section {
+  height: 80vh; /* Altura del banner (80% de la pantalla) */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+/* Capa oscura sobre la imagen para que se lea el texto */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3); 
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.cta-button {
+  background-color: var(--color-green);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.cta-button:hover { transform: scale(1.05); }
+
+/* 3. BENEFICIOS (3 TARJETAS) */
+.benefits-section { padding: 60px 20px; background-color: white; }
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
-}
-
-header {
   text-align: center;
-  margin-bottom: 60px;
 }
+.benefit-card img { height: 80px; margin-bottom: 15px; }
+.benefit-card h3 { font-size: 2rem; margin: 10px 0; }
+.benefit-card p { color: #666; }
 
-h1 {
-  font-size: 5rem; /* Título gigante */
-  line-height: 0.9;
-  color: var(--accent-color);
+/* 4. CALCULADORA */
+.calculator-section {
+  padding: 60px 20px;
+  background-color: var(--color-light);
+  text-align: center;
 }
-
-.subtitle {
-  font-size: 2rem;
-  letter-spacing: 2px;
-  opacity: 0.8;
+.calc-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
-
-/* La Cuadrícula (Grid) */
-.gallery-grid {
-  display: grid;
-  /* Esto crea columnas automáticas que se adaptan al tamaño de pantalla */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-/* Tarjetas */
-.card {
-  background: #1a1a1a;
-  padding: 15px;
-  border: 1px solid #333;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  border-color: var(--accent-color); /* Borde neón al pasar el mouse */
-}
-
-.image-box img {
+.calc-image {
   width: 100%;
-  height: 250px;
-  object-fit: cover; /* Recorta la imagen para que no se deforme */
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.secondary { background-color: var(--color-dark); }
+
+/* 5. GRID DE PROYECTOS */
+.projects-section { padding: 60px 20px; text-align: center; }
+.section-title { font-size: 3rem; margin-bottom: 40px; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.project-card { position: relative; cursor: pointer; }
+.project-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.project-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  padding: 5px 15px;
+  font-family: var(--font-main);
+  font-size: 1.5rem;
+  font-weight: bold;
   border-radius: 4px;
-  filter: grayscale(40%); /* Un toque artístico desaturado */
 }
 
-.card:hover .image-box img {
-  filter: grayscale(0%); /* Vuelve a color al pasar el mouse */
+/* 6. FOOTER */
+.footer {
+  background-color: black;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
 }
-
-.card h2 {
-  font-size: 2.5rem;
-  margin-top: 15px;
-}
-/* Excepción para cuando la imagen es un icono */
-.image-box img.icono {
-  object-fit: contain; /* No recortar */
-  padding: 20px;       /* Darle aire alrededor */
-  background-color: #222; /* Opcional: un fondo un poco más claro para resaltar el icono */
-}
-
+.footer-logo { font-size: 2.5rem; margin-bottom: 10px; }
+.socials { margin: 20px 0; color: #888; }
+.footer-bottom { font-size: 0.8rem; color: #555; border-top: 1px solid #333; padding-top: 20px; }
