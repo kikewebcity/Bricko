@@ -42,6 +42,49 @@ function App() {
         </div>
 
         {/* Puedes copiar y pegar más bloques "div className=card" aquí */}
+        <div className="card">
+          <div className="image-box">
+             <img src={foto3} alt="Icono Tiempo" style={{ objectFit: "contain", padding: "20px" }} />
+          </div>
+          <h2>TIEMPO</h2>
+          <p>Gestión eficiente (Icono).</p>
+        </div>
+
+        {/* TARJETA 4 - Icono Interior */}
+        <div className="card">
+          <div className="image-box">
+             <img src={foto4} alt="Icono Interior" style={{ objectFit: "contain", padding: "20px" }} />
+          </div>
+          <h2>INTERIORISMO</h2>
+          <p>Diseño de espacios.</p>
+        </div>
+
+        {/* TARJETA 5 - Oficina */}
+        <div className="card">
+          <div className="image-box">
+             <img src={foto5} alt="Oficina" />
+          </div>
+          <h2>OFICINA</h2>
+          <p>Proyecto de espacio de trabajo.</p>
+        </div>
+
+        {/* TARJETA 6 - Calculadora */}
+        <div className="card">
+          <div className="image-box">
+             <img src={foto6} alt="Calculadora" style={{ objectFit: "contain" }} />
+          </div>
+          <h2>CALCULADORA</h2>
+          <p>Herramienta o App.</p>
+        </div>
+
+        {/* TARJETA 7 - Baño */}
+        <div className="card">
+          <div className="image-box">
+             <img src={foto7} alt="Baño" />
+          </div>
+          <h2>BAÑO</h2>
+          <p>Diseño residencial.</p>
+        </div>
 
       </div>
     </div>
