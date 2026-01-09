@@ -36,13 +36,16 @@ function App() {
 
       {/* 2. BANNER PRINCIPAL (Slider) */}
          {/* 2. BANNER PRINCIPAL (Slider) */}
+         {/* 2. BANNER PRINCIPAL (Slider) */}
       <section className="hero-section" style={{ backgroundImage: `url(${bannerImg})` }}>
         <div className="hero-content">
-          {/* Título modificado: Parte verde y parte negra, en minúsculas */}
+          
+          {/* TÍTULO MODIFICADO ESTILO CARTEL */}
           <h1 className="hero-title">
-            <span style={{ color: "var(--color-green)" }}>la revolución ecológica</span> <br/>
-            en construcción
+            <span className="highlight-text">LA REVOLUCIÓN ECOLÓGICA</span> <br/>
+            EN CONSTRUCCIÓN
           </h1>
+
           <button className="cta-button">Cotiza Ahora</button>
         </div>
       </section>
