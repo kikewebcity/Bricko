@@ -41,6 +41,9 @@ h1, h2, h3, .logo, .footer-logo {
 }
 @media (min-width: 768px) { .nav-menu { display: flex; } }
 /* 2. BANNER / HERO */
+
+/* --- TÍTULO RESPONSIVO --- */
+/* 2. BANNER / HERO (Estilo Cartel) */
 .hero-section {
   height: 80vh; 
   background-size: cover;
@@ -55,51 +58,66 @@ h1, h2, h3, .logo, .footer-logo {
 .hero-content {
   position: relative;
   z-index: 2;
-  width: 100%; /* Asegura que use todo el ancho disponible */
+  width: 100%;
+  padding: 0 15px; /* Margen de seguridad en celulares */
 }
 
-/* --- TÍTULO RESPONSIVO --- */
+/* --- ESTILOS DEL TÍTULO "CARTEL" (Móvil Primero) --- */
+
+/* Estilo base para la segunda línea ("EN CONSTRUCCIÓN") */
 .hero-title {
-  /* 1. Tamaño para CELULAR (Móvil primero) */
-  font-size: 3rem; /* Bajamos de 5rem a 3rem para que quepa */
-  line-height: 1;  /* Separamos un poquito las líneas */
-  margin-bottom: 20px;
+  font-family: var(--font-main);
   color: var(--color-dark);
-  text-transform: none;
-  padding: 0 15px; /* Margen a los lados para que no toque los bordes del iPhone */
-  word-wrap: break-word; /* Evita que palabras largas rompan el diseño */
+  /* Tamaño pequeño para la segunda línea */
+  font-size: 1.8rem; 
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 25px;
 }
 
-/* --- BOTÓN RESPONSIVO --- */
+/* Estilo destacado para la primera línea ("LA REVOLUCIÓN ECOLÓGICA") */
+.highlight-text {
+  color: var(--color-green);
+  /* Tamaño GRANDE y dominante */
+  font-size: 3rem; 
+  font-weight: 700; /* Un poco más grueso */
+  display: block; /* Asegura que ocupe su propia línea */
+  margin-bottom: 5px; /* Espacio pequeño antes de la segunda línea */
+}
+
+/* --- BOTÓN --- */
 .cta-button {
   background-color: var(--color-green);
   color: white;
   border: none;
-  padding: 12px 30px; /* Un poco más pequeño en cel */
-  font-size: 1.2rem;  /* Letra más chica en el botón */
+  padding: 12px 35px;
+  font-size: 1.3rem;
   font-family: var(--font-main);
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.2s;
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3); /* Sombra verde bonita */
+  transition: transform 0.2s, background-color 0.3s;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
 }
 
 .cta-button:hover { 
-  transform: scale(1.05);
+  transform: translateY(-3px); /* Efecto de "levantarse" al pasar el mouse */
   background-color: #388E3C;
 }
 
-/* --- REGLA MÁGICA: PANTALLAS GRANDES (PC/Tableta) --- */
-/* Si la pantalla mide más de 768px, aplicamos los tamaños gigantes de nuevo */
+/* --- PANTALLAS GRANDES (Efecto Cartel Gigante) --- */
 @media (min-width: 768px) {
+  /* En PC, la diferencia de tamaños es mucho más dramática */
   .hero-title {
-    font-size: 5rem; /* Volvemos al tamaño gigante */
+    font-size: 2.5rem; /* "EN CONSTRUCCIÓN" crece un poco */
+  }
+  .highlight-text {
+    font-size: 6rem; /* "REVOLUCIÓN" se vuelve GIGANTE */
     line-height: 0.9;
   }
   
   .cta-button {
     font-size: 1.8rem;
-    padding: 15px 40px;
+    padding: 15px 50px;
   }
 }
 
