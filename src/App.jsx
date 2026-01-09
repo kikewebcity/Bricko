@@ -35,13 +35,17 @@ function App() {
       </nav>
 
       {/* 2. BANNER PRINCIPAL (Slider) */}
+         {/* 2. BANNER PRINCIPAL (Slider) */}
       <section className="hero-section" style={{ backgroundImage: `url(${bannerImg})` }}>
         <div className="hero-content">
-          <h1 className="hero-title">LA REVOLUCIÓN ECOLÓGICA <br/> EN CONSTRUCCIÓN</h1>
+          {/* Título modificado: Parte verde y parte negra, en minúsculas */}
+          <h1 className="hero-title">
+            <span style={{ color: "var(--color-green)" }}>la revolución ecológica</span> <br/>
+            en construcción
+          </h1>
           <button className="cta-button">Cotiza Ahora</button>
         </div>
       </section>
-
       {/* 3. TRES TARJETAS (BENEFICIOS) */}
          {/* 3. TRES TARJETAS (BENEFICIOS) */}
       <section className="benefits-section">
