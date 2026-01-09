@@ -43,29 +43,39 @@ function App() {
       </section>
 
       {/* 3. TRES TARJETAS (BENEFICIOS) */}
+         {/* 3. TRES TARJETAS (BENEFICIOS) */}
       <section className="benefits-section">
         <div className="benefits-grid">
-          {/* Tarjeta 1 */}
+          
+          {/* Tarjeta 1: TIEMPO (Instalación Rápida) */}
           <div className="benefit-card">
-            <img src={iconTime} alt="Instalación" style={iconStyle} />
+            <div className="icon-box">
+               {/* Si tus iconos son negros, el CSS los volverá blancos automáticamente */}
+               <img src={iconTime} alt="Instalación" />
+            </div>
             <h3>INSTALACIÓN RÁPIDA</h3>
             <p>Ahorro hasta 50% de tiempo en obra.</p>
           </div>
-          {/* Tarjeta 2 */}
+
+          {/* Tarjeta 2: RECICLAJE (100% Ecológico) */}
           <div className="benefit-card">
-            <img src={iconEco} alt="Ecológico" style={iconStyle} />
+            <div className="icon-box">
+               <img src={iconEco} alt="Ecológico" />
+            </div>
             <h3>100% ECOLÓGICO</h3>
             <p>Hecho de papel reciclado comprimido.</p>
           </div>
-          {/* Tarjeta 3 */}
+
+          {/* Tarjeta 3: INTERIOR (Estética Interior) */}
           <div className="benefit-card">
-            <img src={iconInterior} alt="Estética" style={iconStyle} />
+             <div className="icon-box">
+               <img src={iconInterior} alt="Estética" />
+             </div>
             <h3>ESTÉTICA INTERIOR</h3>
             <p>Acabados modernos y limpios.</p>
           </div>
         </div>
       </section>
-
       {/* 4. CALCULADORA */}
       <section className="calculator-section">
         <h2 className="section-title">CALCULA TU PROYECTO</h2>
