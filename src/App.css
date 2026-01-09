@@ -40,8 +40,6 @@ h1, h2, h3, .logo, .footer-logo {
   display: none; 
 }
 @media (min-width: 768px) { .nav-menu { display: flex; } }
-
-/* 2. BANNER / HERO */
 /* 2. BANNER / HERO */
 .hero-section {
   height: 80vh; 
@@ -52,38 +50,57 @@ h1, h2, h3, .logo, .footer-logo {
   justify-content: center;
   text-align: center;
   position: relative;
-  /* IMPORTANTE: Quitamos el ::before (capa oscura) para que se vea bien el texto negro */
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  /* Quitamos 'color: white' para que no afecte */
+  width: 100%; /* Asegura que use todo el ancho disponible */
 }
 
+/* --- TÍTULO RESPONSIVO --- */
 .hero-title {
-  font-size: 5rem; /* Lo hice un poco más grande para que luzca la fuente Teko */
-  line-height: 0.9;
+  /* 1. Tamaño para CELULAR (Móvil primero) */
+  font-size: 3rem; /* Bajamos de 5rem a 3rem para que quepa */
+  line-height: 1;  /* Separamos un poquito las líneas */
   margin-bottom: 20px;
-  color: var(--color-dark); /* "en construcción" se verá en este color (negro) */
-  text-transform: none;     /* IMPORTANTE: Esto permite las minúsculas */
+  color: var(--color-dark);
+  text-transform: none;
+  padding: 0 15px; /* Margen a los lados para que no toque los bordes del iPhone */
+  word-wrap: break-word; /* Evita que palabras largas rompan el diseño */
 }
 
+/* --- BOTÓN RESPONSIVO --- */
 .cta-button {
   background-color: var(--color-green);
   color: white;
   border: none;
-  padding: 15px 40px;
-  font-size: 1.5rem;
+  padding: 12px 30px; /* Un poco más pequeño en cel */
+  font-size: 1.2rem;  /* Letra más chica en el botón */
   font-family: var(--font-main);
-  text-transform: uppercase; /* El botón sí lo dejamos en mayúsculas (se ve mejor) */
+  text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.2s;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3); /* Sombra verde bonita */
 }
 
 .cta-button:hover { 
   transform: scale(1.05);
-  background-color: #388E3C; /* Un verde un poco más oscuro al pasar el mouse */
+  background-color: #388E3C;
+}
+
+/* --- REGLA MÁGICA: PANTALLAS GRANDES (PC/Tableta) --- */
+/* Si la pantalla mide más de 768px, aplicamos los tamaños gigantes de nuevo */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 5rem; /* Volvemos al tamaño gigante */
+    line-height: 0.9;
+  }
+  
+  .cta-button {
+    font-size: 1.8rem;
+    padding: 15px 40px;
+  }
 }
 
 
