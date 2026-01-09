@@ -86,18 +86,63 @@ h1, h2, h3, .logo, .footer-logo {
 .cta-button:hover { transform: scale(1.05); }
 
 /* 3. BENEFICIOS (3 TARJETAS) */
-.benefits-section { padding: 60px 20px; background-color: white; }
+/* 3. BENEFICIOS (Estilo Bloques Verdes) */
+.benefits-section { 
+  padding: 80px 20px; 
+  background-color: white; 
+}
+
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 40px; /* Más espacio entre tarjetas */
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo horizontalmente */
   text-align: center;
 }
-.benefit-card img { height: 80px; margin-bottom: 15px; }
-.benefit-card h3 { font-size: 2rem; margin: 10px 0; }
-.benefit-card p { color: #666; }
+
+/* El Rectángulo Verde */
+.icon-box {
+  background-color: var(--color-green);
+  width: 100%;
+  max-width: 280px; /* Ancho máximo del rectángulo */
+  height: 140px;    /* Altura fija para que sean rectángulos perfectos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px; /* Espacio entre el rectángulo y el título */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave opcional */
+}
+
+/* Estilo de los iconos dentro del rectángulo */
+.icon-box img {
+  height: 70px; /* Tamaño del icono */
+  width: auto;
+  object-fit: contain;
+  /* TRUCO PRO: Esto vuelve cualquier icono (negro o color) a BLANCO puro */
+  filter: brightness(0) invert(1); 
+}
+
+.benefit-card h3 {
+  font-size: 1.8rem; /* Título grande y fuerte */
+  margin: 0 0 15px 0;
+  color: var(--color-dark);
+  font-weight: 800; /* Letra bien gruesa */
+  letter-spacing: 0.5px;
+}
+
+.benefit-card p {
+  color: #555;
+  font-size: 1.1rem; /* Texto un poco más grande y legible */
+  line-height: 1.5;
+  max-width: 250px; /* Evita que el texto se estire demasiado */
+}
 
 /* 4. CALCULADORA */
 /* 4. CALCULADORA (Estilo Dark Card) */
