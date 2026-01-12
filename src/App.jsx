@@ -1,70 +1,101 @@
-import React from 'react'
+import React, { useState } from 'react' // Importamos useState para el menú
 import './App.css'
 
 // --- IMÁGENES ---
-import bannerImg from './assets/banner.avif'       // Foto 1
-import iconEco from './assets/iconoreciclaje.png'  // Foto 2
-import iconTime from './assets/iconotiempo.png'    // Foto 3
-import iconInterior from './assets/iconointerior.png' // Foto 4
-import projectOffice from './assets/oficinap.jpg'  // Foto 5
-import calcImg from './assets/tcalculadora.png'    // Foto 6
-import projectBath from './assets/banop.jpg'       // Foto 7
+// 1. Nuevos Iconos del Navbar
+import logoImg from './assets/iconologo.png'
+import searchIcon from './assets/iconobusqueda.png'
+import cartIcon from './assets/iconocompra.png'
+
+// 2. Imágenes del resto de la página
+import bannerImg from './assets/banner.avif'
+import iconEco from './assets/iconoreciclaje.png'
+import iconTime from './assets/iconotiempo.png'
+import iconInterior from './assets/iconointerior.png'
+import projectOffice from './assets/oficinap.jpg'
+import calcImg from './assets/tcalculadora.png'
+import projectBath from './assets/banop.jpg'
 
 function App() {
-  
-  // Estilo para que los iconos no se deformen
+  // Estado para controlar si el menú hamburguesa está abierto o cerrado
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Función para abrir/cerrar menú
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const iconStyle = { objectFit: "contain", padding: "10px" };
 
   return (
     <div className="main-container">
       
-      {/* 1. BARRA DE NAVEGACIÓN */}
+      {/* 1. TOP BAR (Franja Verde de Envío) */}
+      <div className="top-bar">
+        Envíos a todo el país 🚛
+      </div>
+
+      {/* 2. BARRA DE NAVEGACIÓN */}
       <nav className="navbar">
-        <div className="logo">🧱 BRICKO</div>
-        <ul className="nav-menu">
-          <li>Manifiesto</li>
-          <li>Catálogo</li>
-          <li>Proyectos</li>
-          <li>Blog</li>
-          <li>Contacto</li>
+        
+        {/* Logo Imagen */}
+        <div className="logo-container">
+          <img src={logoImg} alt="Bricko Logo" className="logo-img" />
+        </div>
+
+        {/* Botón Hamburguesa (Solo visible en móvil) */}
+        <div className="hamburger" onClick={toggleMenu}>
+          {/* Si está abierto muestra X, si no muestra ☰ */}
+          {menuOpen ? '✕' : '☰'}
+        </div>
+        
+        {/* Menú Principal (Se activa clase "active" si menuOpen es true) */}
+        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+          
+          {/* ÍTEM CON DESPLEGABLE (NOSOTROS) */}
+          <li className="dropdown-item">
+            <span>NOSOTROS ▾</span>
+            <ul className="dropdown-content">
+              <li>Manifiesto</li>
+              <li>Tecnología (Patente)</li>
+              <li>Ventajas</li>
+            </ul>
+          </li>
+
+          <li>CATÁLOGO</li>
+          <li>CALCULADORA</li>
+          <li>ECO-HUB</li>
+          <li>CONTACTO</li>
         </ul>
+
+        {/* Iconos Búsqueda y Compra */}
         <div className="nav-icons">
-          <span>🔍</span> 
-          <span>🛒</span> 
+          <img src={searchIcon} alt="Buscar" className="nav-icon-img" />
+          <img src={cartIcon} alt="Carrito" className="nav-icon-img" />
         </div>
       </nav>
 
-      {/* 2. BANNER PRINCIPAL (Slider) */}
-         {/* 2. BANNER PRINCIPAL (Slider) */}
-         {/* 2. BANNER PRINCIPAL (Slider) */}
+      {/* 3. BANNER PRINCIPAL */}
       <section className="hero-section" style={{ backgroundImage: `url(${bannerImg})` }}>
         <div className="hero-content">
-          
-          {/* TÍTULO MODIFICADO ESTILO CARTEL */}
           <h1 className="hero-title">
             <span className="highlight-text">LA REVOLUCIÓN ECOLÓGICA</span> <br/>
             EN CONSTRUCCIÓN
           </h1>
-
           <button className="cta-button">Cotiza Ahora</button>
         </div>
       </section>
-      {/* 3. TRES TARJETAS (BENEFICIOS) */}
-         {/* 3. TRES TARJETAS (BENEFICIOS) */}
+
+      {/* 4. TRES TARJETAS (BENEFICIOS) */}
       <section className="benefits-section">
         <div className="benefits-grid">
-          
-          {/* Tarjeta 1: TIEMPO (Instalación Rápida) */}
           <div className="benefit-card">
             <div className="icon-box">
-               {/* Si tus iconos son negros, el CSS los volverá blancos automáticamente */}
                <img src={iconTime} alt="Instalación" />
             </div>
             <h3>INSTALACIÓN RÁPIDA</h3>
             <p>Ahorro hasta 50% de tiempo en obra.</p>
           </div>
-
-          {/* Tarjeta 2: RECICLAJE (100% Ecológico) */}
           <div className="benefit-card">
             <div className="icon-box">
                <img src={iconEco} alt="Ecológico" />
@@ -72,8 +103,6 @@ function App() {
             <h3>100% ECOLÓGICO</h3>
             <p>Hecho de papel reciclado comprimido.</p>
           </div>
-
-          {/* Tarjeta 3: INTERIOR (Estética Interior) */}
           <div className="benefit-card">
              <div className="icon-box">
                <img src={iconInterior} alt="Estética" />
@@ -83,41 +112,36 @@ function App() {
           </div>
         </div>
       </section>
-      {/* 4. CALCULADORA */}
+
+      {/* 5. CALCULADORA */}
       <section className="calculator-section">
-        <h2 className="section-title">CALCULA TU PROYECTO</h2>
         <div className="calc-container">
-          {/* Aquí ponemos la imagen de la calculadora que subiste */}
-          <img src={calcImg} alt="Calculadora de Materiales" className="calc-image" />
+          <h2 style={{color:'white', marginBottom:'20px'}}>CALCULA TU PROYECTO</h2>
+          <img src={calcImg} alt="Calculadora" className="calc-image" />
           <button className="cta-button secondary">Empezar Cálculo</button>
         </div>
       </section>
 
-      {/* 5. GRID DE 3 IMÁGENES (PROYECTOS) */}
+      {/* 6. GRID DE PROYECTOS */}
       <section className="projects-section">
         <h2 className="section-title">TRANSFORMA TUS ESPACIOS</h2>
         <div className="projects-grid">
-          
           <div className="project-card">
             <img src={projectBath} alt="Hogar" />
             <div className="project-label">HOGAR</div>
           </div>
-
           <div className="project-card">
             <img src={projectOffice} alt="Oficina" />
             <div className="project-label">OFICINA</div>
           </div>
-
           <div className="project-card">
-            {/* Reutilizo Oficina porque nos falta una foto, cámbiala cuando puedas */}
             <img src={projectOffice} alt="Comercial" />
             <div className="project-label">COMERCIAL</div>
           </div>
-
         </div>
       </section>
 
-      {/* 6. FOOTER NEGRO */}
+      {/* 7. FOOTER */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">🧱 BRICKO</div>
