@@ -5,7 +5,7 @@ import './App.css'
 // 1. Nuevos Iconos del Navbar
 import logoImg from './assets/Iconologo.png'
 import searchIcon from './assets/Iconobusqueda.png'
-import cartIcon from './assets/iconocompra.png'
+import cartIcon from './assets/Iconocompra.png'
 
 // 2. Imágenes del resto de la página
 import bannerImg from './assets/banner.avif'
