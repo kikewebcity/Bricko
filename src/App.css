@@ -5,262 +5,151 @@
   --color-light: #f4f4f4;
 }
 
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: white;
-  color: var(--color-dark);
+body { margin: 0; font-family: sans-serif; background-color: white; color: var(--color-dark); }
+h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: uppercase; }
+
+/* --- 1. TOP BAR (Franja Verde) --- */
+.top-bar {
+  background-color: var(--color-green);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-h1, h2, h3, .logo, .footer-logo {
-  font-family: var(--font-main);
-  text-transform: uppercase;
-}
-
-/* 1. NAVBAR */
+/* --- 2. NAVBAR --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 15px 20px;
   background: white;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.logo { font-size: 2rem; font-weight: bold; }
+/* Imágenes del Logo y Iconos */
+.logo-img { height: 40px; width: auto; } /* Ajusta altura del logo */
+.nav-icon-img { height: 25px; width: auto; cursor: pointer; margin-left: 15px; }
 
-.nav-menu {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  /* Oculto en móvil por ahora */
-  display: none; 
-}
-@media (min-width: 768px) { .nav-menu { display: flex; } }
-/* 2. BANNER / HERO */
-
-/* --- TÍTULO RESPONSIVO --- */
-/* 2. BANNER / HERO (Estilo Cartel) */
-.hero-section {
-  height: 80vh; 
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 0 15px; /* Margen de seguridad en celulares */
-}
-
-/* --- ESTILOS DEL TÍTULO "CARTEL" (Móvil Primero) --- */
-
-/* Estilo base para la segunda línea ("EN CONSTRUCCIÓN") */
-.hero-title {
-  font-family: var(--font-main);
-  color: var(--color-dark);
-  /* Tamaño pequeño para la segunda línea */
-  font-size: 1.8rem; 
-  text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 25px;
-}
-
-/* Estilo destacado para la primera línea ("LA REVOLUCIÓN ECOLÓGICA") */
-.highlight-text {
-  color: var(--color-green);
-  /* Tamaño GRANDE y dominante */
-  font-size: 3rem; 
-  font-weight: 700; /* Un poco más grueso */
-  display: block; /* Asegura que ocupe su propia línea */
-  margin-bottom: 5px; /* Espacio pequeño antes de la segunda línea */
-}
-
-/* --- BOTÓN --- */
-.cta-button {
-  background-color: var(--color-green);
-  color: white;
-  border: none;
-  padding: 12px 35px;
-  font-size: 1.3rem;
-  font-family: var(--font-main);
-  text-transform: uppercase;
+/* --- MENÚ HAMBURGUESA (Móvil) --- */
+.hamburger {
+  display: block; /* Visible en móvil */
+  font-size: 1.8rem;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  color: var(--color-dark);
 }
 
-.cta-button:hover { 
-  transform: translateY(-3px); /* Efecto de "levantarse" al pasar el mouse */
-  background-color: #388E3C;
+/* Menú oculto por defecto en móvil */
+.nav-menu {
+  position: absolute;
+  top: 70px; /* Debajo de la navbar */
+  left: -100%; /* Escondido a la izquierda */
+  background-color: white;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.3s ease-in-out;
+  list-style: none;
 }
 
-/* --- PANTALLAS GRANDES (Efecto Cartel Gigante) --- */
+/* Clase activa cuando abres el menú */
+.nav-menu.active {
+  left: 0; /* Se desliza a la vista */
+  display: flex;
+}
+
+.nav-menu li {
+  margin: 15px 0;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Dropdown en móvil */
+.dropdown-content { display: none; text-align: center; margin-top: 10px; }
+.dropdown-item:hover .dropdown-content { display: block; }
+.dropdown-content li { font-size: 0.9rem; color: #666; font-weight: normal; margin: 10px 0; }
+
+/* --- PANTALLA GRANDE (PC/Tablet > 768px) --- */
 @media (min-width: 768px) {
-  /* En PC, la diferencia de tamaños es mucho más dramática */
-  .hero-title {
-    font-size: 2.5rem; /* "EN CONSTRUCCIÓN" crece un poco */
-  }
-  .highlight-text {
-    font-size: 6rem; /* "REVOLUCIÓN" se vuelve GIGANTE */
-    line-height: 0.9;
+  .hamburger { display: none; } /* Ocultar botón hamburguesa */
+  
+  .nav-menu {
+    position: static; /* Posición normal */
+    flex-direction: row; /* Horizontal */
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+    display: flex; /* Siempre visible */
+    gap: 30px;
   }
   
-  .cta-button {
-    font-size: 1.8rem;
-    padding: 15px 50px;
+  .nav-menu li { margin: 0; font-size: 0.9rem; }
+  
+  /* Dropdown Flotante en PC */
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    text-align: left;
+    padding: 10px 0;
+    border-top: 3px solid var(--color-green);
   }
+  .dropdown-content li { padding: 8px 20px; margin: 0; }
+  .dropdown-content li:hover { background: #f9f9f9; color: var(--color-green); }
 }
 
-
-/* 3. BENEFICIOS (3 TARJETAS) */
-/* 3. BENEFICIOS (Estilo Bloques Verdes) */
-.benefits-section { 
-  padding: 80px 20px; 
-  background-color: white; 
+/* --- RESTO DEL DISEÑO --- */
+/* Hero / Banner */
+.hero-section {
+  height: 80vh; background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.hero-content { width: 100%; padding: 0 15px; }
+.hero-title { font-size: 1.8rem; line-height: 1; margin-bottom: 25px; color: var(--color-dark); }
+.highlight-text { color: var(--color-green); font-size: 3rem; font-weight: 700; display: block; }
+.cta-button {
+  background-color: var(--color-green); color: white; border: none; padding: 12px 35px;
+  font-size: 1.3rem; font-family: var(--font-main); text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+@media (min-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+  .highlight-text { font-size: 6rem; line-height: 0.9; }
 }
 
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px; /* Más espacio entre tarjetas */
-  max-width: 1200px;
-  margin: 0 auto;
-}
+/* Beneficios */
+.benefits-section { padding: 60px 20px; }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.benefit-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.icon-box { background: var(--color-green); width: 100%; max-width: 280px; height: 140px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
+.icon-box img { height: 70px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
 
-.benefit-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra todo horizontalmente */
-  text-align: center;
-}
+/* Calculadora */
+.calculator-section { padding: 60px 20px; display: flex; justify-content: center; }
+.calc-container { background: #1a1a1a; color: white; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; border: 2px solid var(--color-green); }
+.calc-image { width: 100%; max-width: 350px; margin-bottom: 20px; filter: brightness(0.9); }
+.secondary { background-color: var(--color-green); width: 100%; }
 
-/* El Rectángulo Verde */
-.icon-box {
-  background-color: var(--color-green);
-  width: 100%;
-  max-width: 280px; /* Ancho máximo del rectángulo */
-  height: 140px;    /* Altura fija para que sean rectángulos perfectos */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px; /* Espacio entre el rectángulo y el título */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave opcional */
-}
-
-/* Estilo de los iconos dentro del rectángulo */
-.icon-box img {
-  height: 70px; /* Tamaño del icono */
-  width: auto;
-  object-fit: contain;
-  /* TRUCO PRO: Esto vuelve cualquier icono (negro o color) a BLANCO puro */
-  filter: brightness(0) invert(1); 
-}
-
-.benefit-card h3 {
-  font-size: 1.8rem; /* Título grande y fuerte */
-  margin: 0 0 15px 0;
-  color: var(--color-dark);
-  font-weight: 800; /* Letra bien gruesa */
-  letter-spacing: 0.5px;
-}
-
-.benefit-card p {
-  color: #555;
-  font-size: 1.1rem; /* Texto un poco más grande y legible */
-  line-height: 1.5;
-  max-width: 250px; /* Evita que el texto se estire demasiado */
-}
-
-/* 4. CALCULADORA */
-/* 4. CALCULADORA (Estilo Dark Card) */
-.calculator-section {
-  padding: 80px 20px;
-  background-color: white; /* Fondo general blanco */
-  display: flex;
-  justify-content: center;
-}
-
-.calc-container {
-  background-color: #1a1a1a; /* La tarjeta negra */
-  color: white;
-  padding: 40px;
-  border-radius: 20px; /* Bordes redondeados */
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra elegante */
-  border: 2px solid var(--color-green); /* Borde verde sutil */
-}
-
-/* Título dentro de la tarjeta negra */
-.calc-container h2 {
-  font-family: var(--font-main);
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: white; /* Forzamos blanco */
-}
-
-.calc-image {
-  width: 100%;
-  max-width: 350px;
-  margin-bottom: 20px;
-  filter: brightness(0.9); /* Un pelín más oscura para que se integre */
-}
-
-/* Botón de la calculadora */
-.secondary { 
-  background-color: var(--color-green);
-  color: white;
-  font-weight: bold;
-  letter-spacing: 1px;
-  width: 100%; /* Botón ancho */
-}
-/* 5. GRID DE PROYECTOS */
+/* Proyectos */
 .projects-section { padding: 60px 20px; text-align: center; }
 .section-title { font-size: 3rem; margin-bottom: 40px; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+.project-card { position: relative; }
+.project-card img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
+.project-label { position: absolute; bottom: 20px; left: 20px; background: white; padding: 5px 15px; font-family: var(--font-main); font-size: 1.5rem; font-weight: bold; }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.project-card { position: relative; cursor: pointer; }
-.project-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.project-label {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: white;
-  padding: 5px 15px;
-  font-family: var(--font-main);
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 4px;
-}
-
-/* 6. FOOTER */
-.footer {
-  background-color: black;
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
-}
+/* Footer */
+.footer { background: black; color: white; padding: 40px 20px; text-align: center; }
 .footer-logo { font-size: 2.5rem; margin-bottom: 10px; }
-.socials { margin: 20px 0; color: #888; }
-.footer-bottom { font-size: 0.8rem; color: #555; border-top: 1px solid #333; padding-top: 20px; }
+.footer-bottom { border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; font-size: 0.8rem; color: #555; }
