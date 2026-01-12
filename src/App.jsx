@@ -3,7 +3,7 @@ import './App.css'
 
 // --- IMÁGENES ---
 // 1. Nuevos Iconos del Navbar
-import logoImg from './assets/iconologo.png'
+import logoImg from './assets/Iconologo.png'
 import searchIcon from './assets/iconobusqueda.png'
 import cartIcon from './assets/iconocompra.png'
 
