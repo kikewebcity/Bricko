@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 
-// --- IMPORTACIÓN DE IMÁGENES ---
+// --- 1. IMÁGENES GENERALES Y NAVBAR ---
 import logoImg from './assets/Iconologo.JPG'       
 import searchIcon from './assets/Iconobusqueda.JPG' 
 import cartIcon from './assets/Iconocompra.JPG'     
 import bannerImg from './assets/banner.avif'
+
+// --- 2. ICONOS BENEFICIOS ---
 import iconEco from './assets/iconoreciclaje.png'
 import iconTime from './assets/iconotiempo.png'
 import iconInterior from './assets/iconointerior.png'
-import projectOffice from './assets/oficinap.jpg'
-import projectBath from './assets/banop.jpg'
 
-// --- ICONOS PARA LA CALCULADORA FUNCIONAL ---
+// --- 3. ICONOS CALCULADORA ---
 import iconMuro from './assets/iconomuro.png'
 import iconColumna from './assets/iconocolumna.png'
 import iconFachada from './assets/tcalculadora.png' 
 
-// --- ICONOS DEL FOOTER ---
+// --- 4. PROYECTOS ---
+import projectOffice from './assets/oficinap.jpg'
+import projectBath from './assets/banop.jpg'
+
+// --- 5. FOOTER ---
 import logoWhite from './assets/logowhite.png'
 import iconFb from './assets/iconofacebook.png'
 import iconInsta from './assets/iconoinstagram.png'
 import iconYt from './assets/iconoyoutube.png'
 
-// IMAGEN PAPEL RASGADO (Nota: Respetamos la mayúscula .PNG tal cual tu archivo)
-import tornPaper from './assets/papelrasgado.PNG'
+// --- 6. FONDO DE PAPEL ---
+import paperBg from './assets/papelrasgado.PNG'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,9 +41,10 @@ function App() {
 
   // --- LÓGICA DE CÁLCULO ---
   useEffect(() => {
-    const BRICKOS_POR_M2 = 50; 
+    const BRICKOS_POR_M2 = 50; // Ajusta según tu producto
     let factor = 1;
-    if (tipoMuro === 'doble') factor = 2; 
+    
+    if (tipoMuro === 'doble') factor = 2; // Muro estructural consume doble
     if (tipoMuro === 'fachada') factor = 0.8; 
 
     const area = (parseFloat(ancho) || 0) * (parseFloat(alto) || 0);
@@ -49,15 +54,17 @@ function App() {
   }, [ancho, alto, tipoMuro]);
 
   const toggleMenu = () => { setMenuOpen(!menuOpen); };
+  
+  // Estilo para volver blancos los iconos dentro de la calculadora
   const calcIconStyle = { height: "40px", marginBottom: "8px", filter: "brightness(0) invert(1)" };
 
   return (
     <div className="main-container">
       
-      {/* TOP BAR */}
+      {/* 1. TOP BAR */}
       <div className="top-bar">Envíos a todo el país 🚛</div>
 
-      {/* NAVBAR */}
+      {/* 2. NAVBAR */}
       <nav className="navbar">
         <div className="logo-container">
           <img src={logoImg} alt="Logo" className="logo-img" />
@@ -65,6 +72,8 @@ function App() {
         <div className="hamburger" onClick={toggleMenu}>
           {menuOpen ? '✕' : '☰'}
         </div>
+        
+        {/* Menú Desplegable */}
         <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <li className="dropdown-item">
             <span>NOSOTROS ▾</span>
@@ -79,13 +88,14 @@ function App() {
           <li>ECO-HUB</li>
           <li>CONTACTO</li>
         </ul>
+
         <div className="nav-icons">
           <img src={searchIcon} alt="Buscar" className="nav-icon-img"/>
           <img src={cartIcon} alt="Carrito" className="nav-icon-img"/>
         </div>
       </nav>
 
-      {/* BANNER */}
+      {/* 3. HERO BANNER */}
       <section className="hero-section" style={{ backgroundImage: `url(${bannerImg})` }}>
          <div className="hero-content">
           <h1 className="hero-title">
@@ -96,33 +106,11 @@ function App() {
          </div>
       </section>
 
-      {/* BENEFICIOS */}
-      <section className="benefits-section">
-        <div className="benefits-grid">
-           <div className="benefit-card">
-             <div className="icon-box"><img src={iconTime} alt="Tiempo"/></div>
-             <h3>RAPIDEZ</h3><p>Ahorro de tiempo.</p>
-           </div>
-           <div className="benefit-card">
-             <div className="icon-box"><img src={iconEco} alt="Eco"/></div>
-             <h3>ECOLÓGICO</h3><p>Papel reciclado.</p>
-           </div>
-           <div className="benefit-card">
-             <div className="icon-box"><img src={iconInterior} alt="Diseño"/></div>
-             <h3>DISEÑO</h3><p>Acabados limpios.</p>
-           </div>
-        </div>
-      </section>
-
-      {/* --- AQUÍ ESTABA EL ERROR (Ya corregido) --- */}
-      
-      {/* IMAGEN DE PAPEL RASGADO (Separador) */}
-         {/* ... después del Banner ... */}
-
-      {/* INICIO DEL WRAPPER DE PAPEL (Fondo compartido) */}
-      <div className="paper-wrapper">
+      {/* --- WRAPPER DE PAPEL (FONDO CONTINUO) --- */}
+      {/* Este div envuelve Beneficios y Calculadora y pone el papel de fondo */}
+      <div className="paper-wrapper" style={{ backgroundImage: `url(${paperBg})` }}>
         
-        {/* SECCIÓN 1: BENEFICIOS (Tarjetas Verdes) */}
+        {/* 4. SECCIÓN BENEFICIOS */}
         <section className="benefits-section">
           <div className="benefits-grid">
              <div className="benefit-card">
@@ -140,100 +128,74 @@ function App() {
           </div>
         </section>
 
-        {/* SECCIÓN 2: CALCULADORA */}
+        {/* 5. SECCIÓN CALCULADORA */}
         <section className="calculator-section">
           <div className="calc-container">
             <h2 style={{color:'white', marginBottom:'25px', fontSize:'2rem'}}>¿QUÉ CONSTRUIMOS?</h2>
-            {/* ... (Todo el contenido interno de tu calculadora sigue igual) ... */}
             
-            {/* Solo puse el inicio para no hacer el código larguísimo, 
-                pero aquí va todo lo de los botones, inputs y resultado que ya tienes */}
+            {/* Opciones */}
             <div className="calc-options">
-               {/* ... tus botones ... */}
-               <button className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} onClick={() => setTipoMuro('sencillo')}>
-                  <img src={iconMuro} style={calcIconStyle}/><br/>Muro Divisorio
-               </button>
-               <button className={`calc-btn ${tipoMuro === 'doble' ? 'active' : ''}`} onClick={() => setTipoMuro('doble')}>
-                  <img src={iconColumna} style={calcIconStyle}/><br/>Estructural
-               </button>
-               <button className={`calc-btn ${tipoMuro === 'fachada' ? 'active' : ''}`} onClick={() => setTipoMuro('fachada')}>
-                  <img src={iconFachada} style={calcIconStyle}/><br/>Fachada
-               </button>
-            </div>
-            <div className="calc-inputs">
-               <div className="input-group"><label>ANCHO</label><input type="number" value={ancho} onChange={(e)=>setAncho(e.target.value)} placeholder="0.00"/></div>
-               <div className="input-group"><label>ALTO</label><input type="number" value={alto} onChange={(e)=>setAlto(e.target.value)} placeholder="0.00"/></div>
-            </div>
-            <div className="calc-result"><span className="result-number">{resultado}</span><span className="result-text">BRICKOS</span></div>
-            <button className="cta-button secondary">AGREGAR AL CARRITO</button>
+              <button 
+                className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} 
+                onClick={() => setTipoMuro('sencillo')}
+              >
+                <img src={iconMuro} alt="Muro" style={calcIconStyle} /> <br/>
+                Muro Divisorio
+              </button>
 
+              <button 
+                className={`calc-btn ${tipoMuro === 'doble' ? 'active' : ''}`} 
+                onClick={() => setTipoMuro('doble')}
+              >
+                <img src={iconColumna} alt="Columna" style={calcIconStyle} /> <br/>
+                Estructural
+              </button>
+
+              <button 
+                className={`calc-btn ${tipoMuro === 'fachada' ? 'active' : ''}`} 
+                onClick={() => setTipoMuro('fachada')}
+              >
+                <img src={iconFachada} alt="Fachada" style={calcIconStyle} /> <br/>
+                Fachada
+              </button>
+            </div>
+
+            {/* Inputs */}
+            <div className="calc-inputs">
+              <div className="input-group">
+                <label>ANCHO DE PARED (m)</label>
+                <input 
+                  type="number" 
+                  placeholder="0.00" 
+                  value={ancho} 
+                  onChange={(e) => setAncho(e.target.value)}
+                />
+              </div>
+              <div className="input-group">
+                <label>ALTO DE PARED (m)</label>
+                <input 
+                  type="number" 
+                  placeholder="0.00" 
+                  value={alto} 
+                  onChange={(e) => setAlto(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Resultado */}
+            <div className="calc-result">
+              <span className="result-number">{resultado}</span>
+              <span className="result-text">BRICKOS ESTIMADOS.</span>
+            </div>
+
+            <button className="cta-button secondary">AGREGAR A CARRITO</button>
           </div>
         </section>
-      
-      </div>
 
-      {/* --- SECCIÓN CALCULADORA --- */}
-      <section className="calculator-section">
-        <div className="calc-container">
-          <h2 style={{color:'white', marginBottom:'25px', fontSize:'2rem'}}>¿QUÉ CONSTRUIMOS?</h2>
-          
-          <div className="calc-options">
-            <button 
-              className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} 
-              onClick={() => setTipoMuro('sencillo')}
-            >
-              <img src={iconMuro} alt="Muro" style={calcIconStyle} /> <br/>
-              Muro Divisorio
-            </button>
+      </div> 
+      {/* --- FIN DEL WRAPPER DE PAPEL --- */}
 
-            <button 
-              className={`calc-btn ${tipoMuro === 'doble' ? 'active' : ''}`} 
-              onClick={() => setTipoMuro('doble')}
-            >
-              <img src={iconColumna} alt="Columna" style={calcIconStyle} /> <br/>
-              Estructural
-            </button>
-
-            <button 
-              className={`calc-btn ${tipoMuro === 'fachada' ? 'active' : ''}`} 
-              onClick={() => setTipoMuro('fachada')}
-            >
-              <img src={iconFachada} alt="Fachada" style={calcIconStyle} /> <br/>
-              Fachada
-            </button>
-          </div>
-
-          <div className="calc-inputs">
-            <div className="input-group">
-              <label>ANCHO DE PARED (m)</label>
-              <input 
-                type="number" 
-                placeholder="0.00" 
-                value={ancho}
-                onChange={(e) => setAncho(e.target.value)}
-              />
-            </div>
-            <div className="input-group">
-              <label>ALTO DE PARED (m)</label>
-              <input 
-                type="number" 
-                placeholder="0.00" 
-                value={alto}
-                onChange={(e) => setAlto(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="calc-result">
-            <span className="result-number">{resultado}</span>
-            <span className="result-text">BRICKOS ESTIMADOS.</span>
-          </div>
-
-          <button className="cta-button secondary">AGREGAR A CARRITO</button>
-        </div>
-      </section>
-
-      {/* PROYECTOS */}
+      {/* 6. PROYECTOS */}
       <section className="projects-section">
          <h2 className="section-title">TRANSFORMA TUS ESPACIOS</h2>
          <div className="projects-grid">
@@ -252,17 +214,17 @@ function App() {
          </div>
       </section>
       
-      {/* FOOTER */}
+      {/* 7. FOOTER */}
       <footer className="footer">
         <div className="footer-container">
           
-          {/* Columna 1: Marca */}
+          {/* Columna 1 */}
           <div className="footer-col brand-col">
             <img src={logoWhite} alt="Bricko White" className="footer-logo-img" />
             <p className="footer-slogan">Revolución Ecológica en Construcción.</p>
           </div>
 
-          {/* Columna 2: Enlaces Legales */}
+          {/* Columna 2 */}
           <div className="footer-col links-col">
             <a href="#">Preguntas Frecuentes</a>
             <a href="#">Tiempos de Envío</a>
@@ -270,20 +232,14 @@ function App() {
             <a href="#">Aviso de Privacidad</a>
           </div>
 
-          {/* Columna 3: Contacto y Redes */}
+          {/* Columna 3 */}
           <div className="footer-col contact-col">
             <p>Email: ventas@bricko.com</p>
             <p>Tel: +55-55-55-55-55</p>
             <div className="social-icons">
-               <div className="social-circle">
-                 <img src={iconYt} alt="YouTube" />
-               </div>
-               <div className="social-circle">
-                 <img src={iconInsta} alt="Instagram" />
-               </div>
-               <div className="social-circle">
-                 <img src={iconFb} alt="Facebook" />
-               </div>
+               <div className="social-circle"><img src={iconYt} alt="YouTube" /></div>
+               <div className="social-circle"><img src={iconInsta} alt="Instagram" /></div>
+               <div className="social-circle"><img src={iconFb} alt="Facebook" /></div>
             </div>
             <p className="copyright">Redes:</p>
           </div>
@@ -291,8 +247,8 @@ function App() {
         </div>
       </footer>
 
-    </div> 
+    </div>
   )
 }
 
-export default App 
+export default App
