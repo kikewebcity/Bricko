@@ -23,8 +23,8 @@ import iconFb from './assets/iconofacebook.png'
 import iconInsta from './assets/iconoinstagram.png'
 import iconYt from './assets/iconoyoutube.png'
 
+// IMAGEN PAPEL RASGADO (Nota: Respetamos la mayúscula .PNG tal cual tu archivo)
 import tornPaper from './assets/papelrasgado.PNG'
-
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -113,17 +113,13 @@ function App() {
            </div>
         </div>
       </section>
-      {/* ... Fin de la sección BENEFITS ... */}
 
+      {/* --- AQUÍ ESTABA EL ERROR (Ya corregido) --- */}
+      
       {/* IMAGEN DE PAPEL RASGADO (Separador) */}
       <div className="paper-divider">
         <img src={tornPaper} alt="Decoración papel" />
       </div>
-
-      {/* --- SECCIÓN CALCULADORA --- */}
-      <section className="calculator-section">
-         {/* ... resto del código ... */}
-
 
       {/* --- SECCIÓN CALCULADORA --- */}
       <section className="calculator-section">
@@ -205,7 +201,7 @@ function App() {
          </div>
       </section>
       
-      {/* 7. FOOTER PRO (3 COLUMNAS) */}
+      {/* FOOTER */}
       <footer className="footer">
         <div className="footer-container">
           
@@ -244,7 +240,7 @@ function App() {
         </div>
       </footer>
 
-    </div> /* <--- ¡ESTE ERA EL QUE FALTABA! */
+    </div> 
   )
 }
 
