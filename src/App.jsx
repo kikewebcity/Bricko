@@ -19,6 +19,12 @@ import iconColumna from './assets/iconocolumna.png'
 // Usamos la T como icono de fachada
 import iconFachada from './assets/tcalculadora.png' 
 
+// --- ICONOS DEL FOOTER ---
+import logoWhite from './assets/logowhite.png'
+import iconFb from './assets/iconofacebook.png'
+import iconInsta from './assets/iconoinstagram.png'
+import iconYt from './assets/iconoyoutube.png'
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   
@@ -202,14 +208,45 @@ function App() {
       </section>
       
       {/* FOOTER */}
+         {/* 7. FOOTER PRO (3 COLUMNAS) */}
       <footer className="footer">
-        <div className="footer-content">
-           <div className="footer-logo">🧱 BRICKO</div>
-           <p>© 2026 Bricko. Revolución Ecológica.</p>
+        <div className="footer-container">
+          
+          {/* Columna 1: Marca */}
+          <div className="footer-col brand-col">
+            <img src={logoWhite} alt="Bricko White" className="footer-logo-img" />
+            <p className="footer-slogan">Revolución Ecológica en Construcción.</p>
+          </div>
+
+          {/* Columna 2: Enlaces Legales */}
+          <div className="footer-col links-col">
+            <a href="#">Preguntas Frecuentes</a>
+            <a href="#">Tiempos de Envío</a>
+            <a href="#">Garantía y Devoluciones</a>
+            <a href="#">Aviso de Privacidad</a>
+          </div>
+
+          {/* Columna 3: Contacto y Redes */}
+          <div className="footer-col contact-col">
+            <p>Email: ventas@bricko.com</p>
+            <p>Tel: +55-55-55-55-55</p>
+            <div className="social-icons">
+               <div className="social-circle">
+                 <img src={iconYt} alt="YouTube" />
+               </div>
+               <div className="social-circle">
+                 <img src={iconInsta} alt="Instagram" />
+               </div>
+               <div className="social-circle">
+                 <img src={iconFb} alt="Facebook" />
+               </div>
+            </div>
+            <p className="copyright">Redes:</p>
+          </div>
+
         </div>
       </footer>
 
-    </div>
   )
 }
 
