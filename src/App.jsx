@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 
 // --- IMPORTACIÓN DE IMÁGENES ---
-// Asegúrate de que estos nombres coincidan EXACTAMENTE con tu GitHub
 import logoImg from './assets/Iconologo.JPG'       
 import searchIcon from './assets/Iconobusqueda.JPG' 
 import cartIcon from './assets/Iconocompra.JPG'     
@@ -16,7 +15,6 @@ import projectBath from './assets/banop.jpg'
 // --- ICONOS PARA LA CALCULADORA FUNCIONAL ---
 import iconMuro from './assets/iconomuro.png'
 import iconColumna from './assets/iconocolumna.png'
-// Usamos la T como icono de fachada
 import iconFachada from './assets/tcalculadora.png' 
 
 // --- ICONOS DEL FOOTER ---
@@ -31,31 +29,23 @@ function App() {
   // --- ESTADOS DE LA CALCULADORA ---
   const [ancho, setAncho] = useState('');
   const [alto, setAlto] = useState('');
-  // Tipo de muro seleccionado (por defecto 'sencillo')
   const [tipoMuro, setTipoMuro] = useState('sencillo'); 
   const [resultado, setResultado] = useState(0);
 
   // --- LÓGICA DE CÁLCULO ---
   useEffect(() => {
-    // Ajusta este valor a la realidad de tu producto
     const BRICKOS_POR_M2 = 50; 
-    
     let factor = 1;
-    // Muro doble/estructural gasta el doble
     if (tipoMuro === 'doble') factor = 2; 
-    // Fachada gasta diferente (ejemplo 80%)
     if (tipoMuro === 'fachada') factor = 0.8; 
 
-    // Evitamos errores si los campos están vacíos usando (|| 0)
     const area = (parseFloat(ancho) || 0) * (parseFloat(alto) || 0);
     const total = Math.ceil(area * BRICKOS_POR_M2 * factor);
     
     setResultado(total);
-  }, [ancho, alto, tipoMuro]); // Se ejecuta cada vez que cambian estos datos
+  }, [ancho, alto, tipoMuro]);
 
   const toggleMenu = () => { setMenuOpen(!menuOpen); };
-
-  // Estilo para que los iconos de la calculadora se vean blancos
   const calcIconStyle = { height: "40px", marginBottom: "8px", filter: "brightness(0) invert(1)" };
 
   return (
@@ -121,14 +111,12 @@ function App() {
         </div>
       </section>
 
-      {/* --- SECCIÓN CALCULADORA FUNCIONAL (IDÉNTICA AL DISEÑO) --- */}
+      {/* --- SECCIÓN CALCULADORA --- */}
       <section className="calculator-section">
         <div className="calc-container">
           <h2 style={{color:'white', marginBottom:'25px', fontSize:'2rem'}}>¿QUÉ CONSTRUIMOS?</h2>
           
-          {/* 1. LOS TRES BOTONES DE OPCIÓN */}
           <div className="calc-options">
-            {/* Botón Muro */}
             <button 
               className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} 
               onClick={() => setTipoMuro('sencillo')}
@@ -137,7 +125,6 @@ function App() {
               Muro Divisorio
             </button>
 
-            {/* Botón Estructural/Columna */}
             <button 
               className={`calc-btn ${tipoMuro === 'doble' ? 'active' : ''}`} 
               onClick={() => setTipoMuro('doble')}
@@ -146,7 +133,6 @@ function App() {
               Estructural
             </button>
 
-            {/* Botón Fachada */}
             <button 
               className={`calc-btn ${tipoMuro === 'fachada' ? 'active' : ''}`} 
               onClick={() => setTipoMuro('fachada')}
@@ -156,7 +142,6 @@ function App() {
             </button>
           </div>
 
-          {/* 2. LOS INPUTS DE MEDIDAS */}
           <div className="calc-inputs">
             <div className="input-group">
               <label>ANCHO DE PARED (m)</label>
@@ -178,7 +163,6 @@ function App() {
             </div>
           </div>
 
-          {/* 3. EL RESULTADO */}
           <div className="calc-result">
             <span className="result-number">{resultado}</span>
             <span className="result-text">BRICKOS ESTIMADOS.</span>
@@ -207,8 +191,7 @@ function App() {
          </div>
       </section>
       
-      {/* FOOTER */}
-         {/* 7. FOOTER PRO (3 COLUMNAS) */}
+      {/* 7. FOOTER PRO (3 COLUMNAS) */}
       <footer className="footer">
         <div className="footer-container">
           
@@ -247,6 +230,7 @@ function App() {
         </div>
       </footer>
 
+    </div> /* <--- ¡ESTE ERA EL QUE FALTABA! */
   )
 }
 
