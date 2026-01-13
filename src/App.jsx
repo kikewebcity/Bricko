@@ -28,7 +28,7 @@ import iconInsta from './assets/iconoinstagram.png'
 import iconYt from './assets/iconoyoutube.png'
 
 // --- 6. FONDO DE PAPEL ---
-import paperBg from './assets/papelrasgado.PNG'
+import paperBg from './assets/papelrasgado.png'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
