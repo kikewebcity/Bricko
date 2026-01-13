@@ -64,16 +64,13 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   height: auto;
   line-height: 0;
   position: relative;
-  z-index: 10; /* Encima de la calculadora */
-  margin-bottom: -150px; /* Hace que el papel "monte" la siguiente sección */
+  z-index: 10;
+  
+  /* AJUSTE: Si quieres que cubra más, aumenta este número negativo */
+  /* Prueba con -200px o -250px si la imagen es muy alta */
+  margin-bottom: -200px; 
+  
   pointer-events: none;
-}
-
-.paper-divider img {
-  width: 100%;
-  min-height: 200px;
-  object-fit: cover;
-  display: block;
 }
 
 /* 6. CALCULADORA (Estilo Oscuro) */
