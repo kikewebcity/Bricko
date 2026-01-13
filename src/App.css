@@ -50,44 +50,36 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   .highlight-text { font-size: 6rem; line-height: 0.9; } 
 }
 
-/* 4. BENEFICIOS */
-.benefits-section { padding: 60px 20px; }
+/* 4. WRAPPER DE PAPEL (NUEVO) */
+/* Este contenedor maneja el fondo continuo */
+.paper-wrapper {
+  width: 100%;
+  /* La imagen se carga en el style del HTML, aquí definimos cómo se comporta */
+  background-size: cover; 
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-bottom: 80px; /* Espacio abajo para que no se corte el papel abruptamente */
+}
+
+/* 5. BENEFICIOS (Dentro del Wrapper) */
+.benefits-section { 
+  padding: 60px 20px; 
+  background-color: transparent; /* IMPORTANTE: Transparente para ver el papel */
+}
+
 .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
 .benefit-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .icon-box { background: var(--color-green); width: 100%; max-width: 280px; height: 140px; display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
 .icon-box img { height: 70px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
 .benefit-card h3 { font-size: 1.5rem; margin: 0 0 10px 0; }
 
-/* 5. EFECTO PAPEL RASGADO (Separador) */
-.paper-divider {
-  width: 100%;
-  height: auto;
-  line-height: 0;
-  position: relative;
-  z-index: 1;
-  margin-bottom: -200px; 
-  pointer-events: none;
-}
 
-/* 5. EFECTO PAPEL RASGADO */
-.paper-divider img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* 6. CALCULADORA (Estilo Oscuro) */
+/* 6. CALCULADORA (Dentro del Wrapper) */
 .calculator-section {
-  margin-top:-150px;
-  padding-top: 0px; /* Espacio extra arriba por el papel */
-  padding-bottom: 80px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 40px 20px; /* Padding normal, sin trucos raros */
   display: flex; 
   justify-content: center;
-  position: relative;
-  z-index: 10; 
-  background-color: transparent;
+  background-color: transparent; /* IMPORTANTE: Transparente para ver el papel */
 }
 
 .calc-container {
@@ -137,6 +129,7 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 .result-text { font-size: 1rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 .secondary { width: 100%; padding: 15px; font-size: 1.1rem; letter-spacing: 1px; border-radius: 8px; }
 
+
 /* 7. PROYECTOS */
 .projects-section { padding: 60px 20px; text-align: center; }
 .section-title { font-size: 3rem; margin-bottom: 40px; }
@@ -182,13 +175,4 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   .footer-container { flex-direction: column; text-align: center; gap: 50px; }
   .links-col, .contact-col, .social-icons { align-items: center; justify-content: center; text-align: center; }
   .footer-slogan { margin: 0 auto; }
-  .calculator-section {
-    margin-top: -60px; 
-  }
-  /* Opcional: Si sientes que el texto de la tarjeta queda muy pegado al borde */
-  .calc-container {
-    margin-top: 10px;
-  }
-}
-
 }
