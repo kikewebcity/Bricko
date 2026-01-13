@@ -111,43 +111,116 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 .result-number { display: block; font-size: 4.5rem; font-family: var(--font-main); color: white; line-height: 0.9; margin-bottom: 5px; }
 .result-text { font-size: 1rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 .secondary { width: 100%; padding: 15px; font-size: 1.1rem; letter-spacing: 1px; border-radius: 8px; }
-
-/* --- PROYECTOS & FOOTER --- */
-.projects-section { padding: 60px 20px; text-align: center; }
-.section-title { font-size: 3rem; margin-bottom: 40px; }
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-
-/* ESTA ES LA CORRECCIÓN PARA QUE NO SE MUEVAN */
-.project-card {
-  position: relative; /* Crea el límite para la etiqueta */
-  border-radius: 8px;
-  overflow: hidden;   /* Asegura que nada se salga de las esquinas redondeadas */
-  cursor: pointer;
+/* --- FOOTER PRO --- */
+.footer {
+  background-color: #050505; /* Negro casi puro */
+  color: white;
+  padding: 60px 20px;
+  border-top: 1px solid #222;
 }
 
-.project-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  display: block; /* Elimina espacios extraños debajo de la imagen */
-  transition: transform 0.3s;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Permite que se acomoden en móvil */
+  justify-content: space-between; /* Separa las columnas */
+  gap: 40px;
+  text-align: left;
 }
 
-/* Efecto zoom suave al pasar el mouse */
-.project-card:hover img {
-  transform: scale(1.05);
+/* Estilo general de las columnas */
+.footer-col {
+  flex: 1; /* Ocupan el mismo espacio */
+  min-width: 250px; /* Para que no se aplasten mucho */
 }
 
-.project-label {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: white;
-  padding: 8px 20px;
-  font-family: var(--font-main);
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra para que resalte más */
+/* COLUMNA 1: MARCA */
+.footer-logo-img {
+  height: 50px;
+  width: auto;
+  margin-bottom: 15px;
+}
+
+.footer-slogan {
+  color: #aaa;
+  font-size: 0.9rem;
+  max-width: 250px;
+}
+
+/* COLUMNA 2: ENLACES (Verticales) */
+.links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Centrado en PC por estética */
+}
+
+.links-col a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.links-col a:hover {
+  color: var(--color-green); /* Verde al pasar el mouse */
+}
+
+/* COLUMNA 3: CONTACTO */
+.contact-col {
+  text-align: right; /* Alineado a la derecha en PC */
+}
+
+.contact-col p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Iconos de Redes con Círculo */
+.social-icons {
+  display: flex;
+  justify-content: flex-end; /* Alineado a la derecha */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-circle img {
+  width: 24px;
+  height: 24px;
+  /* Filtro para asegurar que los iconos sean blancos puros */
+  filter: brightness(0) invert(1);
+}
+
+.copyright {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+/* --- RESPONSIVO PARA MÓVIL (Celular) --- */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Una columna debajo de otra */
+    text-align: center; /* Todo centrado */
+    gap: 50px;
+  }
+
+  .links-col {
+    align-items: center; /* Centrar enlaces */
+  }
+
+  .contact-col {
+    text-align: center; /* Centrar contacto */
+  }
+
+  .social-icons {
+    justify-content: center; /* Centrar iconos */
+  }
+  
+  .footer-slogan {
+    margin: 0 auto; /* Centrar slogan */
+  }
 }
 
