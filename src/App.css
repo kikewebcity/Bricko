@@ -76,27 +76,36 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 .input-group { flex: 1; text-align: center; max-width: 150px; /* Limitamos el ancho para que se vean como círculos */ }
 .input-group label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 10px; font-family: var(--font-main); letter-spacing: 1px; font-weight: bold;}
 
+/* EL ESTILO DE LOS CÍRCULOS VERDES */
 .input-group input {
-  width: 100%;
-  height: 60px; /* Altura fija para formar el círculo */
-  background: transparent;
-  border: 3px solid var(--color-green); /* Borde verde grueso */
-  border-radius: 50px; /* Esquinas totalmente redondeadas */
-  color: white;
-  padding: 0 15px;
-  font-size: 1.8rem;
+  width: 80px;  /* Ancho fijo */
+  height: 80px; /* Alto igual al ancho para que sea un círculo perfecto */
+  /* Fondo degradado radial: Verde brillante en el centro, más oscuro en los bordes */
+  background: radial-gradient(circle at 30% 30%, #66bb6a, var(--color-green));
+  border: none; /* Sin borde */
+  border-radius: 50%; /* Círculo perfecto */
+  color: white; /* Números blancos */
+  padding: 0; /* Sin relleno extra */
+  font-size: 2rem; /* Números grandes */
+  font-weight: bold;
   text-align: center;
   font-family: var(--font-main);
-  transition: all 0.3s;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.2); /* Sombra verde suave */
+  box-shadow: 
+    inset 0 2px 5px rgba(255,255,255,0.3), /* Brillo superior interno */
+    0 5px 15px rgba(0,0,0,0.3); /* Sombra inferior externa */
+  transition: transform 0.2s;
 }
 
-/* Al hacer clic, el verde se ilumina más */
+/* Efecto al hacer clic */
 .input-group input:focus {
   outline: none;
-  background-color: rgba(76, 175, 80, 0.1); /* Fondo verde muy sutil */
-  box-shadow: 0 0 20px rgba(76, 175, 80, 0.5); /* Sombra más intensa */
+  transform: scale(1.05); /* Crece un poquito */
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
 }
+
+/* El texto "0.00" se verá blanco */
+.input-group input::placeholder { color: rgba(255,255,255,0.7); }
+
 
 /* Color del texto de ejemplo (placeholder) */
 .input-group input::placeholder { color: #555; font-size: 1.2rem;}
