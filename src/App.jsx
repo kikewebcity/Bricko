@@ -23,6 +23,9 @@ import iconFb from './assets/iconofacebook.png'
 import iconInsta from './assets/iconoinstagram.png'
 import iconYt from './assets/iconoyoutube.png'
 
+import tornPaper from './assets/papelrasgado.PNG'
+
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   
