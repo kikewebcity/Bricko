@@ -113,6 +113,17 @@ function App() {
            </div>
         </div>
       </section>
+      {/* ... Fin de la sección BENEFITS ... */}
+
+      {/* IMAGEN DE PAPEL RASGADO (Separador) */}
+      <div className="paper-divider">
+        <img src={tornPaper} alt="Decoración papel" />
+      </div>
+
+      {/* --- SECCIÓN CALCULADORA --- */}
+      <section className="calculator-section">
+         {/* ... resto del código ... */}
+
 
       {/* --- SECCIÓN CALCULADORA --- */}
       <section className="calculator-section">
