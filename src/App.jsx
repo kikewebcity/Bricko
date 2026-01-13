@@ -117,8 +117,59 @@ function App() {
       {/* --- AQUÍ ESTABA EL ERROR (Ya corregido) --- */}
       
       {/* IMAGEN DE PAPEL RASGADO (Separador) */}
-      <div className="paper-divider">
-        <img src={tornPaper} alt="Decoración papel" />
+         {/* ... después del Banner ... */}
+
+      {/* INICIO DEL WRAPPER DE PAPEL (Fondo compartido) */}
+      <div className="paper-wrapper">
+        
+        {/* SECCIÓN 1: BENEFICIOS (Tarjetas Verdes) */}
+        <section className="benefits-section">
+          <div className="benefits-grid">
+             <div className="benefit-card">
+               <div className="icon-box"><img src={iconTime} alt="Tiempo"/></div>
+               <h3>RAPIDEZ</h3><p>Ahorro de tiempo.</p>
+             </div>
+             <div className="benefit-card">
+               <div className="icon-box"><img src={iconEco} alt="Eco"/></div>
+               <h3>ECOLÓGICO</h3><p>Papel reciclado.</p>
+             </div>
+             <div className="benefit-card">
+               <div className="icon-box"><img src={iconInterior} alt="Diseño"/></div>
+               <h3>DISEÑO</h3><p>Acabados limpios.</p>
+             </div>
+          </div>
+        </section>
+
+        {/* SECCIÓN 2: CALCULADORA */}
+        <section className="calculator-section">
+          <div className="calc-container">
+            <h2 style={{color:'white', marginBottom:'25px', fontSize:'2rem'}}>¿QUÉ CONSTRUIMOS?</h2>
+            {/* ... (Todo el contenido interno de tu calculadora sigue igual) ... */}
+            
+            {/* Solo puse el inicio para no hacer el código larguísimo, 
+                pero aquí va todo lo de los botones, inputs y resultado que ya tienes */}
+            <div className="calc-options">
+               {/* ... tus botones ... */}
+               <button className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} onClick={() => setTipoMuro('sencillo')}>
+                  <img src={iconMuro} style={calcIconStyle}/><br/>Muro Divisorio
+               </button>
+               <button className={`calc-btn ${tipoMuro === 'doble' ? 'active' : ''}`} onClick={() => setTipoMuro('doble')}>
+                  <img src={iconColumna} style={calcIconStyle}/><br/>Estructural
+               </button>
+               <button className={`calc-btn ${tipoMuro === 'fachada' ? 'active' : ''}`} onClick={() => setTipoMuro('fachada')}>
+                  <img src={iconFachada} style={calcIconStyle}/><br/>Fachada
+               </button>
+            </div>
+            <div className="calc-inputs">
+               <div className="input-group"><label>ANCHO</label><input type="number" value={ancho} onChange={(e)=>setAncho(e.target.value)} placeholder="0.00"/></div>
+               <div className="input-group"><label>ALTO</label><input type="number" value={alto} onChange={(e)=>setAlto(e.target.value)} placeholder="0.00"/></div>
+            </div>
+            <div className="calc-result"><span className="result-number">{resultado}</span><span className="result-text">BRICKOS</span></div>
+            <button className="cta-button secondary">AGREGAR AL CARRITO</button>
+
+          </div>
+        </section>
+      
       </div>
 
       {/* --- SECCIÓN CALCULADORA --- */}
