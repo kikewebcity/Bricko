@@ -64,13 +64,16 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   height: auto;
   line-height: 0;
   position: relative;
-  z-index: 10;
-  
-  /* AJUSTE: Si quieres que cubra más, aumenta este número negativo */
-  /* Prueba con -200px o -250px si la imagen es muy alta */
+  z-index: 1;
   margin-bottom: -200px; 
-  
   pointer-events: none;
+}
+
+/* 5. EFECTO PAPEL RASGADO */
+.paper-divider img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* 6. CALCULADORA (Estilo Oscuro) */
