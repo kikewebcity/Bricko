@@ -245,11 +245,10 @@ function App() {
           </div>
 
         </div>
-      </footer>
+     // ... código anterior ...
+        <Footer />  {/* O como se llame tu footer */}
+      </div> 
+  );
+}
 
-    </div> {/* <--- TE FALTA ESTE DIV DE CIERRE */}
-  ) /* <--- TE FALTA ESTE PARÉNTESIS */
-} 
-
-
-export default App
+export default App;
