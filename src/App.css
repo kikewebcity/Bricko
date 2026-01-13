@@ -71,11 +71,42 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 .result-text { font-size: 1rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 .secondary { width: 100%; padding: 15px; font-size: 1.1rem; letter-spacing: 1px; border-radius: 8px; }
 
-/* PROYECTOS & FOOTER */
+/* --- PROYECTOS & FOOTER --- */
 .projects-section { padding: 60px 20px; text-align: center; }
 .section-title { font-size: 3rem; margin-bottom: 40px; }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-.project-card img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
-.project-label { position: absolute; bottom: 20px; left: 20px; background: white; padding: 5px 15px; font-family: var(--font-main); font-size: 1.5rem; font-weight: bold; }
-.footer { background: black; color: white; padding: 30px 20px; text-align: center; }
-.footer-logo { font-size: 2rem; }
+
+/* ESTA ES LA CORRECCIÓN PARA QUE NO SE MUEVAN */
+.project-card {
+  position: relative; /* Crea el límite para la etiqueta */
+  border-radius: 8px;
+  overflow: hidden;   /* Asegura que nada se salga de las esquinas redondeadas */
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block; /* Elimina espacios extraños debajo de la imagen */
+  transition: transform 0.3s;
+}
+
+/* Efecto zoom suave al pasar el mouse */
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  padding: 8px 20px;
+  font-family: var(--font-main);
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra para que resalte más */
+}
+
