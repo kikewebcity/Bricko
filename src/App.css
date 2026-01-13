@@ -78,15 +78,16 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 
 /* 6. CALCULADORA (Estilo Oscuro) */
 .calculator-section {
-  padding-top: 180px; /* Espacio extra arriba por el papel */
+  margin-top:-150px;
+  padding-top: 0px; /* Espacio extra arriba por el papel */
   padding-bottom: 80px;
   padding-left: 20px;
   padding-right: 20px;
   display: flex; 
   justify-content: center;
   position: relative;
-  z-index: 1; /* Debajo del papel */
-  background-color: white;
+  z-index: 10; 
+  background-color: transparent;
 }
 
 .calc-container {
