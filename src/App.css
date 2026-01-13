@@ -83,7 +83,7 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   justify-content: center;
   position: relative;
   z-index: 1; /* Debajo del papel */
-  background-color: var(--color-light); /* Fondo general de la sección */
+  background-color: white;
 }
 
 .calc-container {
