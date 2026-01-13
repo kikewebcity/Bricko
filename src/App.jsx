@@ -249,9 +249,7 @@ function App() {
 
     </div> {/* <--- TE FALTA ESTE DIV DE CIERRE */}
   ) /* <--- TE FALTA ESTE PARÉNTESIS */
-} /* <--- TE FALTA ESTA LLAVE */
-
-export default App
+} 
 
 
 export default App
