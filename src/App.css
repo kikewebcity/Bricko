@@ -47,8 +47,17 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
 .benefit-card h3 { font-size: 1.5rem; margin: 0 0 10px 0; }
 
 /* --- CALCULADORA FUNCIONAL (ESTILO DISEÑO) --- */
-.calculator-section { padding: 80px 20px; display: flex; justify-content: center; background-color: var(--color-light); }
-.calc-container { background-color: #1a1a1a; color: white; padding: 40px 30px; border-radius: 30px; max-width: 450px; width: 100%; text-align: center; border: 3px solid var(--color-green); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+.calc-container {
+  background-color: #1a1a1a; /* Tarjeta negra */
+  color: white;
+  padding: 50px 40px; /* Más espacio interno */
+  border-radius: 35px; /* Bordes más redondeados */
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border: none; /* Quitamos el borde verde exterior, no está en la imagen */
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); /* Sombra más profunda */
+}
 
 /* Botones de Opción */
 .calc-options { display: flex; gap: 15px; justify-content: center; margin-bottom: 35px; }
