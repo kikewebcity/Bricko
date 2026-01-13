@@ -260,4 +260,35 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
     margin: 0 auto; /* Centrar slogan */
   }
 }
+/* --- EFECTO PAPEL RASGADO (Dramático) --- */
+.paper-divider {
+  width: 100%;
+  height: auto;
+  line-height: 0;
+  position: relative;
+  z-index: 10; /* Asegura que el papel quede ENCIMA de lo negro */
+  
+  /* TRUCO CLAVE: */
+  /* Margen negativo igual a la altura aproximada de los "dientes" del papel. */
+  /* Ajusta este número (-100px, -150px) según qué tanto quieras que baje */
+  margin-bottom: -150px; 
+  pointer-events: none; /* Para que no estorbe al clickear cosas abajo */
+}
+
+.paper-divider img {
+  width: 100%;
+  min-height: 200px; /* Forzamos una altura mínima */
+  object-fit: cover; /* Para que no se deforme feo */
+  display: block;
+}
+
+/* Ajuste para que la Calculadora no quede tapada por el papel */
+.calculator-section {
+  /* Le damos más relleno arriba para compensar lo que tapa el papel */
+  padding-top: 180px; 
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 1; /* Se queda debajo del papel */
+}
+
 
