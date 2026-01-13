@@ -182,4 +182,13 @@ h1, h2, h3, .footer-logo { font-family: var(--font-main); text-transform: upperc
   .footer-container { flex-direction: column; text-align: center; gap: 50px; }
   .links-col, .contact-col, .social-icons { align-items: center; justify-content: center; text-align: center; }
   .footer-slogan { margin: 0 auto; }
+  .calculator-section {
+    margin-top: -60px; 
+  }
+  /* Opcional: Si sientes que el texto de la tarjeta queda muy pegado al borde */
+  .calc-container {
+    margin-top: 10px;
+  }
+}
+
 }
