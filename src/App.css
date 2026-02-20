@@ -1,4 +1,4 @@
-mport React, { useState, useEffect } from 'react';
+Import React, { useState, useEffect } from 'react';
 import './App.css';
 // 1. Importamos los iconos profesionales
 import { Search, ShoppingCart, Truck } from 'lucide-react';
