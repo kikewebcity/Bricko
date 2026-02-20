@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 
-// --- 1. IMÁGENES GENERALES Y NAVBAR --- 
+// --- 1. IMÁGENES ---
 import logoImg from './assets/logowhite.png'       
 import searchIcon from './assets/Iconobusqueda.JPG' 
 import cartIcon from './assets/Iconocompra.JPG'   
-// ... otras importaciones
-import seccion1Img from './assets/Seccion1.png';
-import seccion2Img from './assets/seccion2.jpg';
-import seccion3Img from './assets/seccion3.jpg';
+import seccion1Img from './assets/Seccion1.png'
+import seccion2Img from './assets/seccion2.jpg'
+import seccion3Img from './assets/seccion3.jpg'
+import logoSinFondo from './assets/logobricko.png'
 
-
-// --- 2. ICONOS BENEFICIOS ---
+// --- 2. ICONOS ---
 import iconEco from './assets/iconoreciclaje.png'
 import iconTime from './assets/iconotiempo.png'
 import iconInterior from './assets/iconointerior.png'
-import logoSinFondo from './assets/logobricko.png';
-
-// --- 3. ICONOS CALCULADORA ---
 import iconMuro from './assets/iconomuro.png'
 import iconColumna from './assets/iconocolumna.png'
 import iconFachada from './assets/tcalculadora.png' 
-
-// --- 4. PROYECTOS (Los usaremos para el Slider por ahora) ---
 import projectOffice from './assets/oficinap.jpg'
 import projectBath from './assets/banop.jpg'
-
-// --- 5. FOOTER ---
 import logoWhite from './assets/logowhite.png'
 import iconFb from './assets/iconofacebook.png'
 import iconInsta from './assets/iconoinstagram.png'
@@ -34,18 +26,14 @@ import iconYt from './assets/iconoyoutube.png'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  
-  // --- ESTADOS DE LA CALCULADORA ---
   const [ancho, setAncho] = useState('');
   const [alto, setAlto] = useState('');
   const [tipoMuro, setTipoMuro] = useState('sencillo'); 
   const [resultado, setResultado] = useState(0);
-// --- ESTADOS DEL SLIDER HERO ---
-const [currentSlide, setCurrentSlide] = useState(0);
-// USAMOS LAS VARIABLES QUE IMPORTASTE ARRIBA:
-const heroImages = [seccion2Img, seccion3Img, projectBath];
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // --- LÓGICA DEL SLIDER (Cambia cada 5 segundos) ---
+  const heroImages = [seccion1Img, seccion2Img, seccion3Img];
+
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1));
@@ -53,35 +41,27 @@ const heroImages = [seccion2Img, seccion3Img, projectBath];
     return () => clearInterval(slideInterval);
   }, [heroImages.length]);
 
-  // --- LÓGICA DE CALCULADORA ---
   useEffect(() => {
     const BRICKOS_POR_M2 = 50; 
     let factor = 1;
     if (tipoMuro === 'doble') factor = 2; 
     if (tipoMuro === 'fachada') factor = 0.8; 
-
     const area = (parseFloat(ancho) || 0) * (parseFloat(alto) || 0);
-    const total = Math.ceil(area * BRICKOS_POR_M2 * factor);
-    setResultado(total);
+    setResultado(Math.ceil(area * BRICKOS_POR_M2 * factor));
   }, [ancho, alto, tipoMuro]);
 
-  const toggleMenu = () => { setMenuOpen(!menuOpen); };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
   const calcIconStyle = { height: "40px", marginBottom: "8px", filter: "brightness(0) invert(1)" };
 
   return (
     <div className="main-container">
-      
-      {/* 1. TOP BAR */}
       <div className="top-bar">Envíos a todo el país 🚛</div>
 
-      {/* 2. NAVBAR */}
       <nav className="navbar">
         <div className="logo-container">
           <img src={logoImg} alt="Logo" className="logo-img" />
         </div>
-        <div className="hamburger" onClick={toggleMenu}>
-          {menuOpen ? '✕' : '☰'}
-        </div>
+        <div className="hamburger" onClick={toggleMenu}>{menuOpen ? '✕' : '☰'}</div>
         <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <li>NOSOTROS</li>
           <li>PRODUCTOS</li>
@@ -95,29 +75,18 @@ const heroImages = [seccion2Img, seccion3Img, projectBath];
         </div>
       </nav>
 
-      {/* 3. HERO SLIDER ANIMADO (Nuevo Diseño) */}
       <section className="hero-slider">
         {heroImages.map((img, index) => (
-          <div 
-            key={index}
-            className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
+          <div key={index} className={`slide ${index === currentSlide ? 'active' : ''}`} style={{ backgroundImage: `url(${img})` }} />
         ))}
-        {/* Capa oscura para que el texto resalte */}
-        <div className="slide-overlay"></div> 
         <div className="hero-content">
-        <img src={logoSinFondo} alt="Bricko" className="hero-center-logo" />
-          <h1 className="hero-title">
-            TU NUEVO ESPACIO INDUSTRIAL<br/>
-            LISTO EN HORAS
-          </h1>
+          <img src={logoSinFondo} alt="Bricko" className="hero-center-logo" />
+          <h1 className="hero-title">TU NUEVO ESPACIO INDUSTRIAL<br/>LISTO EN HORAS</h1>
           <p className="hero-subtitle">Olvídate del cemento. Renueva con diseño y limpieza</p>
           <button className="cta-button">Solicitar Ficha Técnica y Precios</button>
         </div>
       </section>
 
-      {/* --- EL RESTO DE TUS SECCIONES --- */}
       <section className="benefits-section">
         <div className="benefits-grid">
            <div className="benefit-card">
@@ -135,10 +104,9 @@ const heroImages = [seccion2Img, seccion3Img, projectBath];
         </div>
       </section>
 
-      {/* CALCULADORA */}
       <section className="calculator-section">
         <div className="calc-container">
-          <h2 style={{color:'white', marginBottom:'25px', fontSize:'2rem'}}>¿QUÉ CONSTRUIMOS?</h2>
+          <h2>¿QUÉ CONSTRUIMOS?</h2>
           <div className="calc-options">
             <button className={`calc-btn ${tipoMuro === 'sencillo' ? 'active' : ''}`} onClick={() => setTipoMuro('sencillo')}>
               <img src={iconMuro} alt="Muro" style={calcIconStyle} /> <br/> Muro Divisorio
@@ -152,11 +120,11 @@ const heroImages = [seccion2Img, seccion3Img, projectBath];
           </div>
           <div className="calc-inputs">
             <div className="input-group">
-              <label>ANCHO DE PARED (m)</label>
+              <label>ANCHO (m)</label>
               <input type="number" placeholder="0.00" value={ancho} onChange={(e) => setAncho(e.target.value)}/>
             </div>
             <div className="input-group">
-              <label>ALTO DE PARED (m)</label>
+              <label>ALTO (m)</label>
               <input type="number" placeholder="0.00" value={alto} onChange={(e) => setAlto(e.target.value)}/>
             </div>
           </div>
@@ -168,42 +136,26 @@ const heroImages = [seccion2Img, seccion3Img, projectBath];
         </div>
       </section>
 
-      {/* PROYECTOS */}
-      <section className="projects-section">
-         <h2 className="section-title">TRANSFORMA TUS ESPACIOS</h2>
-         <div className="projects-grid">
-            <div className="project-card"><img src={projectBath} alt="Baño"/><div className="project-label">HOGAR</div></div>
-            <div className="project-card"><img src={projectOffice} alt="Oficina"/><div className="project-label">OFICINA</div></div>
-            <div className="project-card"><img src={projectOffice} alt="Comercial"/><div className="project-label">COMERCIAL</div></div>
-         </div>
-      </section>
-      
-      {/* FOOTER */}
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-col brand-col">
-            <img src={logoWhite} alt="Bricko White" className="footer-logo-img" />
-            <p className="footer-slogan">Revolución Ecológica en Construcción.</p>
+            <img src={logoWhite} alt="Bricko" className="footer-logo-img" />
+            <p>Revolución Ecológica en Construcción.</p>
           </div>
           <div className="footer-col links-col">
             <a href="#">Preguntas Frecuentes</a>
-            <a href="#">Tiempos de Envío</a>
-            <a href="#">Garantía y Devoluciones</a>
             <a href="#">Aviso de Privacidad</a>
           </div>
           <div className="footer-col contact-col">
             <p>Email: ventas@bricko.com</p>
-            <p>Tel: +55-55-55-55-55</p>
             <div className="social-icons">
-               <div className="social-circle"><img src={iconYt} alt="YouTube" /></div>
-               <div className="social-circle"><img src={iconInsta} alt="Instagram" /></div>
-               <div className="social-circle"><img src={iconFb} alt="Facebook" /></div>
+               <div className="social-circle"><img src={iconYt} alt="YT" /></div>
+               <div className="social-circle"><img src={iconInsta} alt="IG" /></div>
+               <div className="social-circle"><img src={iconFb} alt="FB" /></div>
             </div>
-            <p className="copyright">Redes:</p>
           </div>
         </div>
       </footer>
-
     </div>
   )
 }
