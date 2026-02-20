@@ -5,7 +5,6 @@
   --color-dark: #1a1a1a;
   --color-light: #f4f4f4;
 }
-
 body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: white; overflow-x: hidden; }
 h1, h2, h3 { font-family: var(--font-main); text-transform: uppercase; margin: 0; }
 
@@ -62,7 +61,6 @@ h1, h2, h3 { font-family: var(--font-main); text-transform: uppercase; margin: 0
   transform-origin: bottom center; /* Crece desde el centro */
   transition: transform 0.3s ease-out;
 }
-
 /* 3. El efecto al pasar el ratón */
 .nav-menu li:hover {
   color: var(--color-green); /* El texto también cambia a verde suavemente */
@@ -71,8 +69,6 @@ h1, h2, h3 { font-family: var(--font-main); text-transform: uppercase; margin: 0
 .nav-menu li:hover::after {
   transform: scaleX(1); /* La línea se expande al 100% */
 }
-
-
 
 .nav-icon-img {
   height: 20px;
@@ -90,7 +86,6 @@ h1, h2, h3 { font-family: var(--font-main); text-transform: uppercase; margin: 0
   align-items: center;
   justify-content: center;
 }
-
 .slide {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
