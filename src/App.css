@@ -1,140 +1,240 @@
-Import React, { useState, useEffect } from 'react';
-import './App.css';
-// 1. Importamos los iconos profesionales
-import { Search, ShoppingCart, Truck } from 'lucide-react';
-
-// --- IMÁGENES ---
-import logoWhite from './assets/logowhite.png';
-import logoSinFondo from './assets/logobricko.png';
-import seccion1Img from './assets/Seccion1.png';
-import seccion2Img from './assets/seccion2.jpg';
-import seccion3Img from './assets/seccion3.jpg';
-import iconTime from './assets/iconotiempo.png';
-import iconEco from './assets/iconoreciclaje.png';
-import iconInterior from './assets/iconointerior.png';
-import iconMuro from './assets/iconomuro.png';
-import iconColumna from './assets/iconocolumna.png';
-import iconFachada from './assets/tcalculadora.png';
-import iconYt from './assets/iconoyoutube.png';
-import iconInsta from './assets/iconoinstagram.png';
-import iconFb from './assets/iconofacebook.png';
-
-function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [ancho, setAncho] = useState('');
-  const [alto, setAlto] = useState('');
-  const [tipoMuro, setTipoMuro] = useState('sencillo');
-  const [resultado, setResultado] = useState(0);
-
-  const heroImages = [seccion1Img, seccion2Img, seccion3Img];
-
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev === heroImages.length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
-    return () => clearInterval(slideInterval);
-  }, [heroImages.length]);
-
-  useEffect(() => {
-    const BRICKOS_POR_M2 = 50;
-    let factor = 1;
-    if (tipoMuro === 'doble') factor = 2;
-    if (tipoMuro === 'fachada') factor = 0.8;
-    const area = (parseFloat(ancho) || 0) * (parseFloat(alto) || 0);
-    setResultado(Math.ceil(area * BRICKOS_POR_M2 * factor));
-  }, [ancho, alto, tipoMuro]);
-
-  return (
-    <div className="main-container">
-      <div className="top-bar">
-        <Truck size={16} strokeWidth={2.5} style={{ marginRight: '8px' }} />
-        <span>Envíos a todo el país </span>
-      </div>
-      <nav className="navbar">
-        <div className="logo-container">
-          <img src={logoWhite} alt="Bricko" className="logo-img" />
-        </div>
-        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-          <li>NOSOTROS</li>
-          <li>PRODUCTOS</li>
-          <li>INSPIRACIÓN</li>
-          <li>CONTACTO</li>
-        </ul>
-        <div className="nav-icons">
-          {/* Aquí están tus nuevos iconos de Lucide */}
-          <Search
-            color="white"
-            size={22}
-            strokeWidth={2.5}
-            className="nav-icon"
-          />
-          <ShoppingCart
-            color="white"
-            size={22}
-            strokeWidth={2.5}
-            className="nav-icon"
-          />
-        </div>
-      </nav>
-
-      <section className="hero-slider">
-        {heroImages.map((img, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
-        ))}
-        <div className="hero-content">
-          <img src={logoSinFondo} alt="Bricko" className="hero-center-logo" />
-          <h1 className="hero-title">
-            TU NUEVO ESPACIO INDUSTRIAL,
-            <br /> LISTO EN HORAS
-          </h1>
-          <button className="cta-button">Solicitar Ficha Técnica</button>
-        </div>
-      </section>
-
-      <section className="calculator-section">
-        <div className="calc-container">
-          <h2>CALCULADORA DE BRICKOS</h2>
-          <div className="calc-inputs">
-            <input
-              type="number"
-              placeholder="Ancho"
-              value={ancho}
-              onChange={(e) => setAncho(e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="Alto"
-              value={alto}
-              onChange={(e) => setAlto(e.target.value)}
-            />
-          </div>
-          <div className="calc-result">
-            <h3>{resultado} Brickos</h3>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-col">
-            <img src={logoWhite} alt="Bricko" className="footer-logo-img" />
-          </div>
-          <div className="footer-col social-icons">
-            <img src={iconYt} alt="YT" className="social-img" />
-            <img src={iconInsta} alt="IG" className="social-img" />
-            <img src={iconFb} alt="FB" className="social-img" />
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+:root {
+  --font-main: 'Teko', sans-serif;
+  --color-green: #4caf50;
+  --color-dark: #1a1a1a;
+  --color-light: #f4f4f4;
 }
 
-export default App;
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: white;
+  color: var(--color-dark);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-main);
+  text-transform: uppercase;
+}
+
+/* NAVBAR */
+
+
+.top-bar {
+  background-color: var(--color-green); /* Usa el verde #4CAF50 */
+  color: #ffffff; /* Letras blancas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--color-green);
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-menu li {
+  position: relative;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  transition: color 0.3s;
+}
+
+/* Efecto de línea en el menú */
+.nav-menu li::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-menu li:hover {
+  color: var(--color-green);
+}
+.nav-menu li:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-icon-img {
+  height: 22px;
+  filter: brightness(0) invert(1);
+  margin-left: 20px;
+}
+
+/* HERO SLIDER */
+.hero-slider {
+  position: relative;
+  height: 85vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav-icon {
+  color: white; /* Color inicial blanco */
+  margin-left: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: var(--color-green); /* Cambia al verde de Bricko */
+  transform: scale(1.15); /* Crece un poquito */
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 50px 20px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+.hero-center-logo {
+  height: 100px;
+  margin-bottom: 5px;
+}
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.1;
+  color: #000;
+  font-weight: bold;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background: var(--color-green);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.3rem;
+  font-family: var(--font-main);
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* CALCULADORA */
+.calculator-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+.calc-container {
+  background: #1a1a1a;
+  color: white;
+  padding: 40px;
+  border-radius: 35px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+.calc-options {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.calc-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  flex: 1;
+}
+.calc-btn.active {
+  border-color: var(--color-green);
+  background: rgba(76, 175, 80, 0.1);
+}
+.input-group input {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-green);
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+.result-number {
+  font-size: 4rem;
+  display: block;
+  font-family: var(--font-main);
+}
+
+/* FOOTER */
+.footer {
+  background: #050505;
+  color: white;
+  padding: 60px 20px;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-logo-img {
+  height: 50px;
+}
